@@ -1,0 +1,16 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "errors/unknown-suit-name",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "hidden(opp) = suit in {SWORDS, CLUBS}",
+  "expect_error": {
+    "code": "NOTATION_PARSE_ERROR",
+    "message_contains": "Unknown suit",
+    "line": 1,
+    "column": 24
+  }
+}

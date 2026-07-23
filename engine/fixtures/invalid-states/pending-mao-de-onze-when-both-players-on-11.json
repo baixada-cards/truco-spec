@@ -1,0 +1,66 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "invalid-states/pending-mao-de-onze-when-both-players-on-11",
+  "ruleset": "truco-2p-v1",
+  "description": "When both players start on 11, the hand should auto-start at 3 instead of creating a pending mão de onze decision.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 11,
+      "1": 11
+    },
+    "hand_value": 3,
+    "turnup": {
+      "rank": "6",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "3",
+          "suit": "SPADES"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": {
+      "type": "mao_de_onze",
+      "player": 0
+    }
+  },
+  "expect_initial_state_error": "INVALID_INITIAL_STATE"
+}

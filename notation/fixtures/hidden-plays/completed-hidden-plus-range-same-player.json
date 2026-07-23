@@ -1,0 +1,52 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "hidden-plays/completed-hidden-plus-range-same-player",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "seed=83\nhero = {2c, 3s}\nhidden(round=0, player=hero) = Ah",
+  "expect_fragment": {
+    "seed": 83,
+    "hidden_ranges": {
+      "0": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "2",
+                  "suit": "CLUBS"
+                },
+                {
+                  "rank": "3",
+                  "suit": "SPADES"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "completed_hidden_plays": [
+      {
+        "round_index": 0,
+        "player": 0,
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "exact": {
+                "rank": "A",
+                "suit": "HEARTS"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

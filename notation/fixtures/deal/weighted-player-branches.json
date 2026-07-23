@@ -1,0 +1,56 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "deal/weighted-player-branches",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "deal(turnup=As, opp={As, 2c}@1 | {4d, 5d}@2)",
+  "expect_fragment": {
+    "pending_hand": {
+      "turnup": {
+        "rank": "A",
+        "suit": "SPADES"
+      }
+    },
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "A",
+                  "suit": "SPADES"
+                },
+                {
+                  "rank": "2",
+                  "suit": "CLUBS"
+                }
+              ]
+            }
+          },
+          {
+            "weight": 2,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "4",
+                  "suit": "DIAMONDS"
+                },
+                {
+                  "rank": "5",
+                  "suit": "DIAMONDS"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

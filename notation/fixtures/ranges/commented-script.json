@@ -1,0 +1,45 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/commented-script",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "# weighted villain range\n\nseed=29  # reproducible sample\nopp = [>=A, <=3]  # ordered hand\n\n# current hidden card\nhidden(opp) = manilha\n",
+  "expect_fragment": {
+    "seed": 29,
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                {
+                  "strength_at_least": "A"
+                },
+                {
+                  "strength_at_most": "3"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "hidden_plays": {
+      "1": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "is_manilha": true
+            }
+          }
+        ]
+      }
+    }
+  }
+}

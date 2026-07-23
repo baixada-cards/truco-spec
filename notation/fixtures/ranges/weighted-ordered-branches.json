@@ -1,0 +1,38 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/weighted-ordered-branches",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 1,
+    "bot_player": 0
+  },
+  "notation": "me = [>=A, <=3]@3 | [>=2, <=A]@1",
+  "expect_fragment": {
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 3,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                { "strength_at_least": "A" },
+                { "strength_at_most": "3" }
+              ]
+            }
+          },
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                { "strength_at_least": "2" },
+                { "strength_at_most": "A" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

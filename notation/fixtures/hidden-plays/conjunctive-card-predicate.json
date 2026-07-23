@@ -1,0 +1,25 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "hidden-plays/conjunctive-card-predicate",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "hidden(opp) = manilha & suit in {SPADES, CLUBS}",
+  "expect_fragment": {
+    "hidden_plays": {
+      "1": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "is_manilha": true,
+              "allowed_suits": ["SPADES", "CLUBS"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

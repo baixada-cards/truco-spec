@@ -1,0 +1,98 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "raises/no-raise-after-12",
+  "ruleset": "truco-2p-v1",
+  "description": "Once the hand is already at 12, no further raise is available.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 12,
+    "turnup": {
+      "rank": "A",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "7",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "5",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p1c2",
+          "rank": "4",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "last_raised_by": 0,
+    "pending_raise": null,
+    "pending_decision": null
+  },
+  "steps": [
+    {
+      "op": "assert_legal_actions",
+      "player": 0,
+      "must_exclude": [
+        {
+          "type": "raise",
+          "to": 3
+        }
+      ],
+      "must_include": [
+        {
+          "type": "play_face_up",
+          "card_id": "p0c0"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c1"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c2"
+        }
+      ]
+    },
+    {
+      "op": "assert_rejected_action",
+      "player": 0,
+      "action": {
+        "type": "raise",
+        "to": 3
+      },
+      "error_code": "RAISE_NOT_ALLOWED"
+    }
+  ]
+}

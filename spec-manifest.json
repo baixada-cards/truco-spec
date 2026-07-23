@@ -1,0 +1,883 @@
+{
+  "$schema": "./schemas/spec-manifest.schema.json",
+  "corpora": {
+    "engine": {
+      "count": 67,
+      "fixtures": "engine/fixtures",
+      "format": "engine-fixture/v1",
+      "schema": "engine/schemas/fixture.schema.json"
+    },
+    "exploration": {
+      "count": 24,
+      "fixtures": "exploration/fixtures",
+      "format": "exploration-fixture/v1",
+      "schema": "exploration/schemas/fixture.schema.json"
+    },
+    "notation": {
+      "count": 36,
+      "fixtures": "notation/fixtures",
+      "format": "notation-fixture/v1",
+      "schema": "notation/schemas/fixture.schema.json"
+    }
+  },
+  "files": [
+    {
+      "bytes": 11,
+      "path": "VERSION",
+      "sha256": "8e3ccfbe492191dbb919be7b4ef3d93bd88f92b1d99532b25ba19c5ad9f1f722"
+    },
+    {
+      "bytes": 1898,
+      "path": "engine/ASPECTS.md",
+      "sha256": "c3ffd886e12c4fae4abce8dcec50dd581c77b8c9e9188acd6ba3e804267e6838"
+    },
+    {
+      "bytes": 7136,
+      "path": "engine/CONTRACT.md",
+      "sha256": "6b6ac5117254b1ec35e8c13f973e4d21d1484117b93902c255f2384fc695c2cf"
+    },
+    {
+      "bytes": 7334,
+      "path": "engine/README.md",
+      "sha256": "0788585679e48a880c0bb60bf09c92a4bd1f12f75c840fa499bceb32d39cc6d0"
+    },
+    {
+      "bytes": 2779,
+      "path": "engine/WORKFLOW.md",
+      "sha256": "e3c167332653a0468d9f3ec256391867de532bf825b3b428ab33dd3530f11091"
+    },
+    {
+      "bytes": 317,
+      "path": "engine/aspects/TEMPLATE.md",
+      "sha256": "9fd1110ed1e673d4ac51fd9060d288fb8243b845f9901030d6c53bab2a80b332"
+    },
+    {
+      "bytes": 492,
+      "path": "engine/aspects/card-ordering.md",
+      "sha256": "9820683ec453c4dd500a2d89bfbad163506d100119c156d44e64e27230dd80c8"
+    },
+    {
+      "bytes": 937,
+      "path": "engine/aspects/errors-and-invalid-actions.md",
+      "sha256": "3f7d35af83fc9173f4afed521a1d9754ac0d6fd3e88654cbc1c9881bacd2ccf7"
+    },
+    {
+      "bytes": 932,
+      "path": "engine/aspects/hand-resolution.md",
+      "sha256": "3f7a1f041accadcda3cd5929ef5f39fe8196f2f18c4917733537af9614180653"
+    },
+    {
+      "bytes": 414,
+      "path": "engine/aspects/hidden-cards.md",
+      "sha256": "5c0d5cb3232bf258ae89719155251f649ad03d34942b4befcc44420b259f19d7"
+    },
+    {
+      "bytes": 891,
+      "path": "engine/aspects/invalid-states.md",
+      "sha256": "b6999ef03f1244a45fa695d3417edd2b6cc6cec7308ed06294c12ad4ed573091"
+    },
+    {
+      "bytes": 1221,
+      "path": "engine/aspects/raises.md",
+      "sha256": "f8c91fc125def461e93890a0e88d69cb5a539a6c5b18227aec7a7c9b90a521fe"
+    },
+    {
+      "bytes": 1016,
+      "path": "engine/aspects/round-resolution.md",
+      "sha256": "1c8ad3d62e4b0a36c6005d0ccc55789b3ca4e1040d9ebe2c1dcacba8f1efca47"
+    },
+    {
+      "bytes": 1525,
+      "path": "engine/aspects/score-and-match-flow.md",
+      "sha256": "68da0284c79c44548bdfa001f1eee04c2f04b0b8f891269aafec401911b955b2"
+    },
+    {
+      "bytes": 1315,
+      "path": "engine/aspects/turn-structure.md",
+      "sha256": "27e34dcc372ccee87227594288a8add9ed78d28ecd3a1dec6c383ac8babe5fd7"
+    },
+    {
+      "bytes": 1729,
+      "path": "engine/fixtures/card-ordering/manilha-beats-non-manilha.json",
+      "sha256": "42882b8fd5584b5e3830224bc290c7ceaa71b37582cb0001e0a086f682bcb1df"
+    },
+    {
+      "bytes": 1737,
+      "path": "engine/fixtures/card-ordering/manilha-suit-order.json",
+      "sha256": "2e5e0ae0a1cefcc01c4309e0f7be233a5b8b6a29bb9bae0b695110ccb246fc9f"
+    },
+    {
+      "bytes": 2177,
+      "path": "engine/fixtures/card-ordering/non-manilha-same-rank-tie.json",
+      "sha256": "22c6c63f308c2dc2d2b93112bfce16897a1e859bddea1d1510d917f248481678"
+    },
+    {
+      "bytes": 1790,
+      "path": "engine/fixtures/card-ordering/same-matchup-ignores-unused-cards.json",
+      "sha256": "820ba4db628d68fdfce3cbc847b475baaf5c20502c120b1a5e4e2ccd57c79fc8"
+    },
+    {
+      "bytes": 1753,
+      "path": "engine/fixtures/card-ordering/stronger-non-manilha-beats-weaker.json",
+      "sha256": "bbdecf55fb7f2a7dd4f8f21e1a8b2d80d779f2c23d6fdd09a230bd6476f35f06"
+    },
+    {
+      "bytes": 1357,
+      "path": "engine/fixtures/errors-and-invalid-actions/accept-raise-without-pending.json",
+      "sha256": "77fa3e20c63ee5c08cef1afd80f43cec7093b8f248f60e5325bf6d1312a83d68"
+    },
+    {
+      "bytes": 1361,
+      "path": "engine/fixtures/errors-and-invalid-actions/card-not-in-hand.json",
+      "sha256": "96fc7fc8e0598a3806374259b449ae43b290b0ae3619c608758ec3ed3c46cfb6"
+    },
+    {
+      "bytes": 1337,
+      "path": "engine/fixtures/errors-and-invalid-actions/fold-without-pending-raise.json",
+      "sha256": "8991ad267dbcca4a9beeee854a3f27d47fdb2f1d8b5c800b10b0208d75dd0ab2"
+    },
+    {
+      "bytes": 1379,
+      "path": "engine/fixtures/errors-and-invalid-actions/illegal-raise-target.json",
+      "sha256": "1013dd64be53ba1efb2b47c079e68391f5ec76cc1917caa64d53f08181b52d5d"
+    },
+    {
+      "bytes": 1372,
+      "path": "engine/fixtures/errors-and-invalid-actions/out-of-turn-action.json",
+      "sha256": "1a9e1d9742fb3474b5270fd6b8224dc195350b4576091f7a861a92f1365d6037"
+    },
+    {
+      "bytes": 1527,
+      "path": "engine/fixtures/errors-and-invalid-actions/re-raise-at-12-is-illegal.json",
+      "sha256": "dbec452f2e8ff3c193fc323bc099677c3b87cb86c3bceea66d01531e937fd731"
+    },
+    {
+      "bytes": 1721,
+      "path": "engine/fixtures/errors-and-invalid-actions/same-player-cannot-reraise-immediately-after-accept.json",
+      "sha256": "df94b4a2c5a7b9bb987e75d54f8a49f424262d1ab2b156df0136b54cbbaf21ee"
+    },
+    {
+      "bytes": 2571,
+      "path": "engine/fixtures/hand-resolution/all-three-rounds-tied.json",
+      "sha256": "97990bb1150ae56c769019a90cedb130b06048c6c78b7b5a7c9cadd40dfd6e1c"
+    },
+    {
+      "bytes": 2221,
+      "path": "engine/fixtures/hand-resolution/first-round-tie-second-round-win.json",
+      "sha256": "3ec0dfd7cd45ea9cf73475790c3e5fccd51b87c47f4f37bdb9c8a4ab1b2ae728"
+    },
+    {
+      "bytes": 2185,
+      "path": "engine/fixtures/hand-resolution/first-two-rounds-win.json",
+      "sha256": "a650c2c28fdf8bd5c24cff1d406adfcd99ad8f6cda673031729b34c045728a06"
+    },
+    {
+      "bytes": 2212,
+      "path": "engine/fixtures/hand-resolution/win-plus-tie.json",
+      "sha256": "43d60c6860dd6fa7b5474711a34dfb60fad4ea7ba50f23c71f3e11966bb1f809"
+    },
+    {
+      "bytes": 2072,
+      "path": "engine/fixtures/hidden-cards/cannot-hide-first-round.json",
+      "sha256": "195a8df30d9c01f2150319b22d346925a724e928c8b57a5a19735834b663fbf2"
+    },
+    {
+      "bytes": 1789,
+      "path": "engine/fixtures/hidden-cards/hidden-card-stays-hidden-in-public-state.json",
+      "sha256": "d7b124fe053dd292ee9cc4fad5fab2de861e5af9f8adbc6cf67e0864b6b1b097"
+    },
+    {
+      "bytes": 2144,
+      "path": "engine/fixtures/hidden-cards/hidden-vs-hidden-round-ties.json",
+      "sha256": "b572e9e63665e4a56ff042cd96a54f217984fdb03e8e25ba2b3fcadbd741b52c"
+    },
+    {
+      "bytes": 2258,
+      "path": "engine/fixtures/hidden-cards/hide-allowed-from-second-round.json",
+      "sha256": "296aedc46208455a786a276e669ae653489581bdb20a53b77ac515ae6aa64187"
+    },
+    {
+      "bytes": 1878,
+      "path": "engine/fixtures/hidden-cards/visible-card-beats-hidden-card.json",
+      "sha256": "e8a6508876123c9de54f9949173bdaaeda475edde64dac4ebe3c6ae30bf6fcca"
+    },
+    {
+      "bytes": 1305,
+      "path": "engine/fixtures/invalid-states/both-players-on-11-must-start-at-3.json",
+      "sha256": "da64912987ce148e76a29e29d2a6279b8cf6bbaf440eb0f573443dc9ecc1f0a7"
+    },
+    {
+      "bytes": 1024,
+      "path": "engine/fixtures/invalid-states/broken-inter-round-leader-chain.json",
+      "sha256": "119f3c5e45858ae8eeb373476cebcffc99f69104a30c356e654a57532f9f29d3"
+    },
+    {
+      "bytes": 1140,
+      "path": "engine/fixtures/invalid-states/dealer-led-first-round.json",
+      "sha256": "4ab10b452a1dea37149154fa3fcb57292303932a2ad5e0c1e8b127d788dc3c32"
+    },
+    {
+      "bytes": 1309,
+      "path": "engine/fixtures/invalid-states/eleven-hand-at-value-1-without-decision.json",
+      "sha256": "430f09a3750b81edf9433ed5f84f5ae2ad83f030eafda3aa0be6b5bb0998c7fc"
+    },
+    {
+      "bytes": 989,
+      "path": "engine/fixtures/invalid-states/hand-continues-after-two-round-win.json",
+      "sha256": "8e4610a2a0457d6f9cb909f86bf96128c697f5f0fc8d6b877a4869f90a7eb567"
+    },
+    {
+      "bytes": 1306,
+      "path": "engine/fixtures/invalid-states/hidden-play-in-first-round.json",
+      "sha256": "81172f57949d9272bc3afd7ffe3df4cbc816fb93c1f300a5acdf29e19162f536"
+    },
+    {
+      "bytes": 1164,
+      "path": "engine/fixtures/invalid-states/impossible-card-counts-after-history.json",
+      "sha256": "675b15093fefb2493c30c3b249846b43cc3db02b567b81a638ee910d6357d4ac"
+    },
+    {
+      "bytes": 1261,
+      "path": "engine/fixtures/invalid-states/live-hand-with-match-already-won.json",
+      "sha256": "646d9f8d15651723030c8e9359e33b8d30d31f3959533b4abb9b0e438942163a"
+    },
+    {
+      "bytes": 1228,
+      "path": "engine/fixtures/invalid-states/next-player-disagrees-with-current-round.json",
+      "sha256": "8fb35e225ec5c9851f7b6fae2a5d21594b2f6f9dcd28e88962342125a0abe607"
+    },
+    {
+      "bytes": 1374,
+      "path": "engine/fixtures/invalid-states/pending-mao-de-onze-when-both-players-on-11.json",
+      "sha256": "12cb6c42e2a69f6d7750acf737610354d0c4b51aca562d4a1908584593a88108"
+    },
+    {
+      "bytes": 1381,
+      "path": "engine/fixtures/invalid-states/pending-raise-during-mao-de-onze.json",
+      "sha256": "8ed0726720439a851fed5c0ba95f6836c1ad1702fc739e67c07826c186a98175"
+    },
+    {
+      "bytes": 1394,
+      "path": "engine/fixtures/invalid-states/pending-raise-in-accepted-eleven-hand.json",
+      "sha256": "c37280c03626c7412d48323784b6659aa07251309c8ddb66ca790bd1ef8655b7"
+    },
+    {
+      "bytes": 1697,
+      "path": "engine/fixtures/raises/accepted-raise-does-not-let-same-player-reraise-immediately.json",
+      "sha256": "51536b5b300d9025d715944ae4c8cc366fb93e669ed6892a2ff278205fcf60f6"
+    },
+    {
+      "bytes": 2281,
+      "path": "engine/fixtures/raises/accepted-reraise-over-played-card-keeps-response-turn.json",
+      "sha256": "8f25bea576798ef63672f8d4cb944fd1beb0301625e075283989e3b3e1f8b949"
+    },
+    {
+      "bytes": 1845,
+      "path": "engine/fixtures/raises/no-raise-after-12.json",
+      "sha256": "bd1343439eb53d02855c394505e99712b7e118bd2a134efe336a9b4bfc0bb0f6"
+    },
+    {
+      "bytes": 1835,
+      "path": "engine/fixtures/raises/opening-raise-accepted.json",
+      "sha256": "1b8b659c0ef782db982fdcb0fa79c9f5f5113504525d07ca4b214ec89d2de512"
+    },
+    {
+      "bytes": 1700,
+      "path": "engine/fixtures/raises/opening-raise-declined.json",
+      "sha256": "d9f94ef27e1b1c6e7d8c00e9095baa6f16b58fc657a49cc6fb2e3b220fa2a0b9"
+    },
+    {
+      "bytes": 2408,
+      "path": "engine/fixtures/raises/pending-raise-restricts-ordinary-play.json",
+      "sha256": "2e80482d1266b7a915051245f40e3a67aa0af67238a7fe2138728574679b9703"
+    },
+    {
+      "bytes": 2207,
+      "path": "engine/fixtures/raises/pending-reraise-over-played-card-round-trips.json",
+      "sha256": "7edd91bea5ef9cf1cf18ffb8103118a4063ad0a83efeca555691abf23c0aeac9"
+    },
+    {
+      "bytes": 1957,
+      "path": "engine/fixtures/raises/re-raise-from-3-to-6.json",
+      "sha256": "69aecae35f2f171b4b6b879641f8cfd6b0ef332ff25462bffcef8bb41373f4a4"
+    },
+    {
+      "bytes": 2114,
+      "path": "engine/fixtures/raises/re-raise-from-6-to-9.json",
+      "sha256": "b58b0b49dc0670d4dfe3597d8e9b9bc8c1182f325facd3d022000e2c7d3f8f38"
+    },
+    {
+      "bytes": 2246,
+      "path": "engine/fixtures/raises/re-raise-from-9-to-12.json",
+      "sha256": "6c4a6c2d26d54eda18154df8552953fefb869d1e8eb6eb28c7e2415f1f16917b"
+    },
+    {
+      "bytes": 1530,
+      "path": "engine/fixtures/raises/same-player-cannot-raise-twice.json",
+      "sha256": "0d63e495ca74c91e4746c2050921c9acfb823aed83b042520d739159cd422cd6"
+    },
+    {
+      "bytes": 1724,
+      "path": "engine/fixtures/round-resolution/fold-ends-round-immediately.json",
+      "sha256": "a30677d0acc9665eada11990a7fbe44614cc6de4cd30db185b23cd6ed3360366"
+    },
+    {
+      "bytes": 1774,
+      "path": "engine/fixtures/round-resolution/round-not-resolved-after-first-play.json",
+      "sha256": "a3a6b8d6e9030dffaf4cb077c9acc7af05db0dfd6d12eca268b3f68a237b9c6a"
+    },
+    {
+      "bytes": 1780,
+      "path": "engine/fixtures/round-resolution/tied-round-has-no-winner.json",
+      "sha256": "c0552524ae2d1e4d5234d6f5292c253d47c3c06179a4724e515352b0128332e9"
+    },
+    {
+      "bytes": 1735,
+      "path": "engine/fixtures/round-resolution/visible-card-beats-hidden-card.json",
+      "sha256": "46c411f0ec76b249c1259cd8c84607512e6f2c94fa72858f19f323cda825eacc"
+    },
+    {
+      "bytes": 1797,
+      "path": "engine/fixtures/round-resolution/won-round-records-leader-and-winner.json",
+      "sha256": "3e4a187b4a10c533cfacfcfc1e090326336bce5d572fe9a6c3b01cc333cd3557"
+    },
+    {
+      "bytes": 2441,
+      "path": "engine/fixtures/score-and-match-flow/accepted-raise-split-round-third-trick-round-trips.json",
+      "sha256": "a5d7069a7255dfd76033f1257c588c33bdc31230d672e4660f5cfc21097a58bd"
+    },
+    {
+      "bytes": 1911,
+      "path": "engine/fixtures/score-and-match-flow/concede-during-pending-re-raise-awards-implicit-value.json",
+      "sha256": "444af0228cd55f1e4d48329b98adf11b057a050aee6b654f8d5de7b5c8079234"
+    },
+    {
+      "bytes": 2103,
+      "path": "engine/fixtures/score-and-match-flow/concede-hand-awards-current-value.json",
+      "sha256": "719d5ec27bb36c2fa7ac57ef481d47e475034bc97a3074598a5e856ea2a88a25"
+    },
+    {
+      "bytes": 1830,
+      "path": "engine/fixtures/score-and-match-flow/declined-raise-awards-previous-value.json",
+      "sha256": "e16dcc8171e226cfa110ab4de6a58a5f9243e49bdff814446a7b32caace0a9a9"
+    },
+    {
+      "bytes": 3325,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-accept-path-ends-match-at-12.json",
+      "sha256": "abfa45078dad4d71c1aa3ae2637e1e62fb4f096a62a7226db145bf7d82f7b88e"
+    },
+    {
+      "bytes": 2951,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-both-players-on-11-win-awards-3.json",
+      "sha256": "1baeb702fac7a51c6aaa4481b21c9968aa20eba27d5784ec51089d0d691dd941"
+    },
+    {
+      "bytes": 2429,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-both-players-on-11.json",
+      "sha256": "b50a1e9fd66ca5022bfdd668cc6601db605b684b0177420643cc8f5521c37db4"
+    },
+    {
+      "bytes": 2127,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-fold-concedes-1.json",
+      "sha256": "f658f92cfa96c96e189f0ceb5320780b68a30060522481f7fb2f88ea29e4488c"
+    },
+    {
+      "bytes": 2596,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-no-raises-at-11.json",
+      "sha256": "0725b18a5503ccde9c7f7c0576d6c0775fad26e144dde4b098a73eb4c9db558c"
+    },
+    {
+      "bytes": 1346,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-non-eleven-player-cannot-own-decision.json",
+      "sha256": "cb1b398580a1f74db4d7f4ac2dd1121b7d3801a3bd5bb238ebebda90ff0e8580"
+    },
+    {
+      "bytes": 2642,
+      "path": "engine/fixtures/score-and-match-flow/mao-de-onze-player-on-eleven-owns-decision-even-when-not-leading.json",
+      "sha256": "731c2645b6e7518786ada06431fda3b19dad2ef3ca48605923f3cf1e7275945b"
+    },
+    {
+      "bytes": 2324,
+      "path": "engine/fixtures/score-and-match-flow/match-end-at-12.json",
+      "sha256": "11a275bfda8ebc913ac0632d82ad7b38ce193824156f3385d945f8f361eacbda"
+    },
+    {
+      "bytes": 2276,
+      "path": "engine/fixtures/score-and-match-flow/normal-hand-win-awards-1.json",
+      "sha256": "43b22e2d3cc4aa3c8622605eac4676a2cc8d7709f7c903e9bd5bd073cd4c570e"
+    },
+    {
+      "bytes": 2943,
+      "path": "engine/fixtures/score-and-match-flow/raised-hand-win-awards-3.json",
+      "sha256": "72d9e793480b179243b6c3c40738d56cffc0e16835d935dae5c26574af4a8952"
+    },
+    {
+      "bytes": 2688,
+      "path": "engine/fixtures/turn-structure/dealer-left-leads-first-round.json",
+      "sha256": "767f91fe96378b1848935af39d61bf4ba15561c4b488560272844cf1f23ccd0d"
+    },
+    {
+      "bytes": 2525,
+      "path": "engine/fixtures/turn-structure/pending-raise-response-legality.json",
+      "sha256": "66c9201bb8e49404ac005c36697e0e1b3384e4ccec2afb6758af4e4d1ece21eb"
+    },
+    {
+      "bytes": 1744,
+      "path": "engine/fixtures/turn-structure/round-winner-leads-next-round.json",
+      "sha256": "06f9b3d6320431754c28fbf1e9c48e7a04bf082fab42bfa61baf5f478a1d2ad1"
+    },
+    {
+      "bytes": 1768,
+      "path": "engine/fixtures/turn-structure/tied-round-keeps-leader.json",
+      "sha256": "5c28ac86bd32fbcda5b1e8d7aa0009775208fe489a8372cba041a8a4daf13b15"
+    },
+    {
+      "bytes": 18361,
+      "path": "engine/schemas/fixture.schema.json",
+      "sha256": "1fcfe3e35f7c9a1268f5145bd9c82675e6275bc472b50e0492a5d0a2e7cdb407"
+    },
+    {
+      "bytes": 5935,
+      "path": "engine/schemas/game-state.schema.json",
+      "sha256": "8a445a3cb9aa27c6516e6469e90be7573ddc83315fd15857997e0ef0cb054b4f"
+    },
+    {
+      "bytes": 1895,
+      "path": "engine/schemas/match-state.schema.json",
+      "sha256": "7e9a4f755b4a833e0de7fbe38badfabc7d1a8f7d237346240dae38eaf6247d56"
+    },
+    {
+      "bytes": 5813,
+      "path": "engine/schemas/partial-public-state.schema.json",
+      "sha256": "dd9a6e80bf32409920fbec8e7588e33e1804e1098e5b3e7687637b443b61a8f5"
+    },
+    {
+      "bytes": 5594,
+      "path": "engine/schemas/public-state.schema.json",
+      "sha256": "17983650d02c1c6fd0e2ca4c525670fd87d4e27f16ca6b263f097a9192d29a71"
+    },
+    {
+      "bytes": 1992,
+      "path": "exploration/ASPECTS.md",
+      "sha256": "d5e77a155137c2e41b184de6a0f4f967c2289ac0620f8ed57d2f9f201ec22659"
+    },
+    {
+      "bytes": 7368,
+      "path": "exploration/CONTRACT.md",
+      "sha256": "4425dc7bf6b40075b1fd457d00d2c7cf92ce38ea9a8bc8a6eb1aa3c9b316405d"
+    },
+    {
+      "bytes": 1823,
+      "path": "exploration/README.md",
+      "sha256": "20b3fcbbd8d6e09934d199a514363ca4a058a44db1481d50101b3d6477bc6152"
+    },
+    {
+      "bytes": 1212,
+      "path": "exploration/WORKFLOW.md",
+      "sha256": "45cf0600f83da81cc57ce670366fda16f504123747db5dd366e2b7c3d9b1a30a"
+    },
+    {
+      "bytes": 156,
+      "path": "exploration/aspects/TEMPLATE.md",
+      "sha256": "2307348fc3a18071ea15de5ade9066fda54b9faa6d865c48f9febb2203026471"
+    },
+    {
+      "bytes": 226,
+      "path": "exploration/aspects/errors.md",
+      "sha256": "b0331226c9e6a2ccd1d7f1c0434877baa62616d14e8900fd95ed838e6eec67a5"
+    },
+    {
+      "bytes": 607,
+      "path": "exploration/aspects/hidden-plays.md",
+      "sha256": "b201d30827454ef46342b260d16d63b65b48dea97e967773ce8aa6d78f13d91d"
+    },
+    {
+      "bytes": 404,
+      "path": "exploration/aspects/hidden-ranges.md",
+      "sha256": "fca3c0d53eca2fed888e4e52b508be579a329c4af93acc1f3486670b12a2eb3e"
+    },
+    {
+      "bytes": 290,
+      "path": "exploration/aspects/joint-ranges.md",
+      "sha256": "a54d9af0fd478276eb37fcc7d586ea2ac908b3d3f5715e4b542bc8b22e8f1696"
+    },
+    {
+      "bytes": 469,
+      "path": "exploration/aspects/nature-nodes.md",
+      "sha256": "7c94a295b6ed0d616a4eec6e0080cd0d56cd4d6a1e1fd0adb4e47c2d899124a8"
+    },
+    {
+      "bytes": 292,
+      "path": "exploration/aspects/weighted-branches.md",
+      "sha256": "91085105c99548c9171e7c46134a4d0fcf462e8bcaef31bde474c4430ebfc606"
+    },
+    {
+      "bytes": 1939,
+      "path": "exploration/fixtures/errors/completed-hidden-play-collides-with-known-card.json",
+      "sha256": "4b585d49c4e598da7c3618f6d03b38ff2587f0a7e1391968d7f746e08240bee5"
+    },
+    {
+      "bytes": 580,
+      "path": "exploration/fixtures/errors/hidden-play-requires-active-hand.json",
+      "sha256": "bb4b4e270fa92423e3d5a39d4e71b8916b469ae92f41137621997b4939c68bb4"
+    },
+    {
+      "bytes": 322,
+      "path": "exploration/fixtures/errors/invalid-base-state.json",
+      "sha256": "157136d4d0ae12e26b80ada689817a6dcdac35c13b1e270830e85e4fd80a9176"
+    },
+    {
+      "bytes": 733,
+      "path": "exploration/fixtures/errors/missing-pending-hand-spec.json",
+      "sha256": "4ffad4f13f16508867bc0b0568209618d61764909592413a864f925d2767bffd"
+    },
+    {
+      "bytes": 1946,
+      "path": "exploration/fixtures/errors/no-completed-hidden-play-to-override.json",
+      "sha256": "011f513fe4a9935f13f98006070ebc1d297c5ef46e9a498f7b5b1d7aa8526b35"
+    },
+    {
+      "bytes": 1505,
+      "path": "exploration/fixtures/errors/no-hidden-play-to-override.json",
+      "sha256": "7f3aa0af98d8314abe58b81b2cdb287d6a94594a15c5127304f1b28ab565e2f7"
+    },
+    {
+      "bytes": 1660,
+      "path": "exploration/fixtures/errors/no-range-candidates.json",
+      "sha256": "cb675ceaeb4c930c3a64032e6850588c52e4d79d95005446d62218546e33c519"
+    },
+    {
+      "bytes": 1367,
+      "path": "exploration/fixtures/errors/pending-hand-with-active-hand.json",
+      "sha256": "ad791b6d4c05810e423043aa9f52096d286c125b20ab6717f56af92a5546906f"
+    },
+    {
+      "bytes": 740,
+      "path": "exploration/fixtures/errors/ranges-require-pending-hand-spec.json",
+      "sha256": "43f14430e72fc77c23c1d1acdd1050854df5247eb3afa9e07139278620843964"
+    },
+    {
+      "bytes": 2955,
+      "path": "exploration/fixtures/hidden-plays/combine-completed-hidden-play-and-hand-range.json",
+      "sha256": "a4c9a36344f7802f5371d5307c63057a59e672afa81ed1cee4f2903e5d3e65a0"
+    },
+    {
+      "bytes": 3011,
+      "path": "exploration/fixtures/hidden-plays/combine-current-and-completed-hidden-plays.json",
+      "sha256": "0018068f0528eab5c8a29522109ddce94085ab90c194c7ccc2b5f45e64555c97"
+    },
+    {
+      "bytes": 2849,
+      "path": "exploration/fixtures/hidden-plays/combine-hidden-play-and-hand-range.json",
+      "sha256": "1e4d839f6360431bb841a3e1c12c6071187834621f38ec875c4cb41f84358c82"
+    },
+    {
+      "bytes": 2422,
+      "path": "exploration/fixtures/hidden-plays/exact-completed-round-face-down-play.json",
+      "sha256": "f85806e504ac3a7a80f40d29d37c281e114132dbe436a8a1e3de3e11ef9c56e6"
+    },
+    {
+      "bytes": 2500,
+      "path": "exploration/fixtures/hidden-plays/exact-current-round-face-down-play.json",
+      "sha256": "e96975bf43a3ba1aea9d0e3806396f6bbd50165b58c24b4f276e1646e30d4c6b"
+    },
+    {
+      "bytes": 2219,
+      "path": "exploration/fixtures/hidden-ranges/conjunctive-slot-constraints.json",
+      "sha256": "f40a3e4d4bef8ecff95f90cc4589771cba68b22af62e16d9320fd6325d50f3d8"
+    },
+    {
+      "bytes": 1949,
+      "path": "exploration/fixtures/hidden-ranges/exact-opponent-hand.json",
+      "sha256": "acf733a3c24e78f166f9efa81906ccb46e8a918deb7b523a711e299aa042a26d"
+    },
+    {
+      "bytes": 1901,
+      "path": "exploration/fixtures/hidden-ranges/identity-without-hidden-ranges.json",
+      "sha256": "4ce9f58d1a5f27b6f9354b4f7936d7b01e03c835d8c5d564adcf7b68243ab5e7"
+    },
+    {
+      "bytes": 1997,
+      "path": "exploration/fixtures/hidden-ranges/ordered-opponent-hand.json",
+      "sha256": "0f8756ca2c5167adc44efa383245652c0c86732842cf255ddcf5ba7eb8570e21"
+    },
+    {
+      "bytes": 2541,
+      "path": "exploration/fixtures/joint-ranges/compatible-overrides-both-players.json",
+      "sha256": "78b0a030a70b9813f099caf34a0048eef5f8ba8ef9ac3a3cddbc7bcdcc77082a"
+    },
+    {
+      "bytes": 2049,
+      "path": "exploration/fixtures/joint-ranges/duplicate-card-collision-is-rejected.json",
+      "sha256": "37ec66548f6827392fb9e5cded26d3443402ad94e7d2e42ee48923aae3846ee8"
+    },
+    {
+      "bytes": 1213,
+      "path": "exploration/fixtures/nature-nodes/specify-player-zero-full-hand-before-deal.json",
+      "sha256": "7c468489a363ce142d630ec5d521969f239d5c1814960db00b548041a1114507"
+    },
+    {
+      "bytes": 904,
+      "path": "exploration/fixtures/nature-nodes/start-fresh-hand-with-exact-turnup.json",
+      "sha256": "fc5d32f1cf4b60f99c58c73d29c8bddd94339187f26671cfc438fe8b609e0e4e"
+    },
+    {
+      "bytes": 2279,
+      "path": "exploration/fixtures/weighted-branches/seeded-sampling-is-deterministic.json",
+      "sha256": "b2e2f983f71c66ad4327e4ede8d17d6a108372c0f18e9f934b4786b83e622809"
+    },
+    {
+      "bytes": 2274,
+      "path": "exploration/fixtures/weighted-branches/zero-weight-branch-is-ignored.json",
+      "sha256": "bad8cd63ebd6af7771dd34b0442469aae866523d24e4a7125ba175899a3d7cc0"
+    },
+    {
+      "bytes": 6870,
+      "path": "exploration/schemas/fixture.schema.json",
+      "sha256": "396f6089ec113bb9a7da9b81532141349049edb6abb0c00625bd47c766e6cc05"
+    },
+    {
+      "bytes": 1097,
+      "path": "notation/ASPECTS.md",
+      "sha256": "0a913cc8543a077e0a767ea4af8807c8e1e7d4bb2295f4c3825ab73e8f239dc6"
+    },
+    {
+      "bytes": 2886,
+      "path": "notation/CONTRACT.md",
+      "sha256": "ce15da61ff63586ff60ec0a80c3d148aed692530b0e932e8fb502e88c453fbae"
+    },
+    {
+      "bytes": 2605,
+      "path": "notation/PARITY.md",
+      "sha256": "62cd4a9cf065eda3d631c524bcc13be4b7ffc88db5dc149d57f61e9f87231028"
+    },
+    {
+      "bytes": 1803,
+      "path": "notation/README.md",
+      "sha256": "b4074317a96a96eb3fdd5159ec961468ec92a2694e586f5768f1f91e83763745"
+    },
+    {
+      "bytes": 428,
+      "path": "notation/aspects/deal.md",
+      "sha256": "0ec74308d4b9a015a6d8ac29939e29823bf01cf89b2314e085c9d255dc2929ac"
+    },
+    {
+      "bytes": 467,
+      "path": "notation/aspects/errors.md",
+      "sha256": "cc27c5d7131cdb9e7de7bcb1d6110abe30c8dd823823687559da8ba24b51fb03"
+    },
+    {
+      "bytes": 550,
+      "path": "notation/aspects/hidden-plays.md",
+      "sha256": "6eb4f474c3629c2f21070ad91116c1da166d07d92055827710b42bb2feaffe05"
+    },
+    {
+      "bytes": 550,
+      "path": "notation/aspects/ranges.md",
+      "sha256": "f9da41cde2ea745d505e2489a0c946206cac454aa51ea6a0e76c8ba0326f0885"
+    },
+    {
+      "bytes": 1229,
+      "path": "notation/fixtures/deal/merge-deal-and-seat-ranges.json",
+      "sha256": "8cc525aae3236b192e8365140a0519f706c0188995f8e8aeffe41e294188faa6"
+    },
+    {
+      "bytes": 1420,
+      "path": "notation/fixtures/deal/predeal-both-players-workflow.json",
+      "sha256": "54012fa3f3c41211015cd6fa239428c275e8bf4cd53d13e5da00e20fb40803c5"
+    },
+    {
+      "bytes": 745,
+      "path": "notation/fixtures/deal/predeal-turnup-and-range.json",
+      "sha256": "acb05b52fec6338f885d58f2789ac617f715e9b2297f8749c72d356774628d34"
+    },
+    {
+      "bytes": 1515,
+      "path": "notation/fixtures/deal/seeded-weighted-script.json",
+      "sha256": "81015d3317ed1f3f03abac75f7afa5c2d2c43a19cbcb2d9f5dde3e03d5cfbeb7"
+    },
+    {
+      "bytes": 1186,
+      "path": "notation/fixtures/deal/weighted-player-branches.json",
+      "sha256": "15a7f1444682a8ec2d6f49b68309290887c64ce491e12b3469ef80c91ccabff0"
+    },
+    {
+      "bytes": 361,
+      "path": "notation/fixtures/errors/bad-card-literal.json",
+      "sha256": "40216ba5aede65dc79ddaafa56937cbe2f68a006f41a4e83fe398d3ca4d9a279"
+    },
+    {
+      "bytes": 355,
+      "path": "notation/fixtures/errors/bad-weight-literal.json",
+      "sha256": "dbe57667719de11eba991d0fe2d636852412d4879fad102fa4f19407c5f108e0"
+    },
+    {
+      "bytes": 472,
+      "path": "notation/fixtures/errors/duplicate-completed-hidden-target.json",
+      "sha256": "1a4ae33c22c581e77a9d3897b4b76fd8dd29218c660b0948aabcc97fcc705856"
+    },
+    {
+      "bytes": 380,
+      "path": "notation/fixtures/errors/duplicate-conjunctive-field.json",
+      "sha256": "b7bd0fc9c54145c9993380891b67afb9782675647def03425840f4d17cb94d85"
+    },
+    {
+      "bytes": 396,
+      "path": "notation/fixtures/errors/duplicate-deal-turnup.json",
+      "sha256": "61e7fe640a83ec707e365db72d8b5e8114bee5bf4ef4a7c55cc452793ac0b1b4"
+    },
+    {
+      "bytes": 426,
+      "path": "notation/fixtures/errors/duplicate-player-range-assignment.json",
+      "sha256": "9b64ac004340b7f068ec829ac861d5f31b858473b3a71a32beb26e2a5e156531"
+    },
+    {
+      "bytes": 375,
+      "path": "notation/fixtures/errors/duplicate-seed-statement.json",
+      "sha256": "4169e52f54594a7021c7c492710196fb945760673368fdfb1cfe8a97d4d39254"
+    },
+    {
+      "bytes": 362,
+      "path": "notation/fixtures/errors/unknown-player-reference.json",
+      "sha256": "31443e235b626088a85ffe0b17e653140fb835c8d75994e7b800a9de51de5d18"
+    },
+    {
+      "bytes": 362,
+      "path": "notation/fixtures/errors/unknown-suit-name.json",
+      "sha256": "f6af618bb81289f714cf0a62328e4260f1ed133624345b08090915838f57fcd2"
+    },
+    {
+      "bytes": 375,
+      "path": "notation/fixtures/errors/unsupported-deal-argument.json",
+      "sha256": "627927813b496c5cc23ed820fa9dcb3d9a334b77272d1fbc2e6d20e6612204f0"
+    },
+    {
+      "bytes": 1635,
+      "path": "notation/fixtures/hidden-plays/commented-analysis-workflow.json",
+      "sha256": "950e2656cadf63b9da5515bb4ab46d69a038d75b65e63a63af9558ad7657a8b9"
+    },
+    {
+      "bytes": 590,
+      "path": "notation/fixtures/hidden-plays/completed-hidden-play.json",
+      "sha256": "aa58c3cbb86e4a8564d67836533a6148405973c9681cb2587533813761114c80"
+    },
+    {
+      "bytes": 1100,
+      "path": "notation/fixtures/hidden-plays/completed-hidden-plus-range-same-player.json",
+      "sha256": "6a2a4f7152df92c8d4d14b643cecd353b8e90e503e9002d6b3506b90e76399b0"
+    },
+    {
+      "bytes": 539,
+      "path": "notation/fixtures/hidden-plays/conjunctive-card-predicate.json",
+      "sha256": "f6769fa6aab89e16fa8f2d8df965509cb4776ae9325f959c7b17058f8b93619f"
+    },
+    {
+      "bytes": 454,
+      "path": "notation/fixtures/hidden-plays/current-hidden-play.json",
+      "sha256": "a081ca446b447e4803d3fff037a68f424118fcbdec6e2dd22ee5b777aaf2dc6e"
+    },
+    {
+      "bytes": 1046,
+      "path": "notation/fixtures/hidden-plays/multi-target-hidden-script.json",
+      "sha256": "fe7885d3605632515c8c9c29d7aa5a0c13c62dcd304cef0000f718d5bf4e5b00"
+    },
+    {
+      "bytes": 987,
+      "path": "notation/fixtures/hidden-plays/multiple-completed-hidden-targets.json",
+      "sha256": "1ac81fe3706e4c1d90520dc7491286777f63a03f6cfcd6d8e8370afb803b5ca9"
+    },
+    {
+      "bytes": 539,
+      "path": "notation/fixtures/hidden-plays/rank-class-with-suit-filter.json",
+      "sha256": "69b863b60da84acb361accf35392ca7249e5a27f955f49c22d22e9232f803efb"
+    },
+    {
+      "bytes": 491,
+      "path": "notation/fixtures/hidden-plays/suit-in-card-predicate.json",
+      "sha256": "798cb62571b43d426d0d622abf89269b04148327e5f7c82278cd3def25ce3b01"
+    },
+    {
+      "bytes": 796,
+      "path": "notation/fixtures/hidden-plays/weighted-completed-hidden-play.json",
+      "sha256": "9a7a54efa8462b1299c83b72f8c84065a38ca44666df7a6d8eeae4f3a6a9ff9e"
+    },
+    {
+      "bytes": 661,
+      "path": "notation/fixtures/hidden-plays/weighted-current-hidden-play.json",
+      "sha256": "e0761d92ac72e242f13d3657fa34fa7e5e2e29d860bfebf022e190a5929a3516"
+    },
+    {
+      "bytes": 988,
+      "path": "notation/fixtures/ranges/commented-script.json",
+      "sha256": "f4fc338032b5b5ed98f044fdf1791f42c6c52dd7e8a5bf1a8d720297ba5386d3"
+    },
+    {
+      "bytes": 752,
+      "path": "notation/fixtures/ranges/conjunctive-slot-predicate.json",
+      "sha256": "cfbb08d0ef7223f35a9d363677ea0818d48a2896968848dfdb1426808856a645"
+    },
+    {
+      "bytes": 578,
+      "path": "notation/fixtures/ranges/hero-exact-hand.json",
+      "sha256": "b2f53b5057e60d751abeba9fe071fdc407443e9b87380fa9e2f4918d7597f47e"
+    },
+    {
+      "bytes": 827,
+      "path": "notation/fixtures/ranges/multi-line-script.json",
+      "sha256": "09a8723426fe44a52eedb1148087dd78309b8ecd1fc76a3582e35bfe65adba5e"
+    },
+    {
+      "bytes": 573,
+      "path": "notation/fixtures/ranges/opp-ordered-range.json",
+      "sha256": "58f1a284de0132be2a1cc9e375a684978bd9d7f6e64cf635c26b917cdc2ae48e"
+    },
+    {
+      "bytes": 730,
+      "path": "notation/fixtures/ranges/rank-class-with-suit-filter.json",
+      "sha256": "5fa3a9fc831968af96222698c8c8ba9718cd2eb70ec3e2318b6e1df66b14f562"
+    },
+    {
+      "bytes": 666,
+      "path": "notation/fixtures/ranges/rank-in-slot-predicate.json",
+      "sha256": "a2af1192229e787062ba39c71c6f632a7e396d00ad749fd3ec515eb3c4ac5a13"
+    },
+    {
+      "bytes": 1367,
+      "path": "notation/fixtures/ranges/seeded-both-players-script.json",
+      "sha256": "f040d31fe3791e9f81997ec7c6ada9bce52a931cc40b646ac0e6cfb929c4619d"
+    },
+    {
+      "bytes": 863,
+      "path": "notation/fixtures/ranges/weighted-exact-branches.json",
+      "sha256": "b07f9b78381e6da2aac148c4ee13fb1cf16cf901af6da563da379d3106acbe54"
+    },
+    {
+      "bytes": 847,
+      "path": "notation/fixtures/ranges/weighted-ordered-branches.json",
+      "sha256": "51e0db4aa041c7065641e2589f77200777db83b94e206e3eb964caf01b8e54b9"
+    },
+    {
+      "bytes": 1656,
+      "path": "notation/schemas/fixture.schema.json",
+      "sha256": "88d5ae23c7e4cfe5bc5bea0ac0230a5f985ac1a427da7d69d52433ce4364cdbe"
+    },
+    {
+      "bytes": 4278,
+      "path": "rulesets/truco-2p-v1.md",
+      "sha256": "b1b6144743f092e382b51d64014d2f864e0bbb57c4746b682b37b45ee3479cc7"
+    },
+    {
+      "bytes": 2793,
+      "path": "schemas/spec-manifest.schema.json",
+      "sha256": "a0faad765cf42cdeca0da83da668745e251806215e363343863fa20ddf802f56"
+    }
+  ],
+  "format": "truco-spec-manifest/v1",
+  "rulesets": {
+    "truco-2p-v1": {
+      "document": "rulesets/truco-2p-v1.md"
+    }
+  },
+  "source": "https://github.com/baixada-cards/truco-spec",
+  "version": "1.0.0-rc.1"
+}

@@ -1,0 +1,28 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/opp-ordered-range",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "opp = [>=A, <=3]",
+  "expect_fragment": {
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                { "strength_at_least": "A" },
+                { "strength_at_most": "3" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

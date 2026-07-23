@@ -1,0 +1,38 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "hidden-plays/weighted-completed-hidden-play",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "hidden(round=0, player=hero) = As@2 | 2c@1",
+  "expect_fragment": {
+    "completed_hidden_plays": [
+      {
+        "round_index": 0,
+        "player": 0,
+        "weighted_cards": [
+          {
+            "weight": 2,
+            "card": {
+              "exact": {
+                "rank": "A",
+                "suit": "SPADES"
+              }
+            }
+          },
+          {
+            "weight": 1,
+            "card": {
+              "exact": {
+                "rank": "2",
+                "suit": "CLUBS"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

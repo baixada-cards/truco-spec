@@ -1,0 +1,35 @@
+# Notation Aspects
+
+- `ranges`
+  - ordered and exact hand expressions
+  - weighted alternatives
+  - rank-class shorthands like `A*`
+  - `rank in {...}` predicates
+  - conjunctive slot predicates
+  - player alias handling
+  - blank-line and comment-friendly scripts
+  - both-player workflow scripts
+- `hidden-plays`
+  - current hidden plays
+  - completed hidden plays
+  - weighted card alternatives
+  - weighted completed hidden-play alternatives
+  - rank-class card predicates
+  - `suit in {...}` predicates
+  - conjunctive card predicates
+  - multi-target hidden-play scripts
+  - duplicate completed hidden-play targets are conflicts
+  - same-player hidden-play plus hand-range workflows
+- `deal`
+  - pre-deal `turnup=...`
+  - player hand ranges inside `deal(...)`
+  - weighted hand branches inside `deal(...)`
+  - multi-statement script merges around `deal(...)`
+  - both-player pre-deal workflows
+- `errors`
+  - unknown aliases
+  - malformed cards
+  - malformed `deal(...)` arguments
+  - conflicting multi-line assignments
+  - duplicate completed hidden-play targets
+  - unsupported statements

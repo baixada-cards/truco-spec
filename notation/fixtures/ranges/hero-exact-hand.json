@@ -1,0 +1,28 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/hero-exact-hand",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 1,
+    "bot_player": 0
+  },
+  "notation": "hero = {As, 2c}",
+  "expect_fragment": {
+    "hidden_ranges": {
+      "0": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                { "rank": "A", "suit": "SPADES" },
+                { "rank": "2", "suit": "CLUBS" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

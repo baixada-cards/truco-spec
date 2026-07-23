@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baixada.cards/spec/truco-2p-v1/engine/match-state.schema.json",
+  "title": "MatchState",
+  "description": "The exact serialized state of a two-player Truco match, including an optional active hand.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "next_dealer",
+    "score",
+    "winner",
+    "current_hand"
+  ],
+  "properties": {
+    "next_dealer": {
+      "$ref": "#/$defs/player"
+    },
+    "score": {
+      "$ref": "#/$defs/score"
+    },
+    "winner": {
+      "$ref": "#/$defs/nullablePlayer"
+    },
+    "current_hand": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/engineState"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "player": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "nullablePlayer": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ]
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "0",
+        "1"
+      ],
+      "properties": {
+        "0": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "1": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        }
+      }
+    },
+    "engineState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "hand_winner",
+        "match_winner"
+      ],
+      "properties": {
+        "state": {
+          "$ref": "https://baixada.cards/spec/truco-2p-v1/engine/game-state.schema.json"
+        },
+        "hand_winner": {
+          "$ref": "#/$defs/nullablePlayer"
+        },
+        "match_winner": {
+          "$ref": "#/$defs/nullablePlayer"
+        }
+      }
+    }
+  }
+}

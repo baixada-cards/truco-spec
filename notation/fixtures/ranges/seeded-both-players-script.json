@@ -1,0 +1,63 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/seeded-both-players-script",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "seed=3\nhero = {4s, 6h, 7c}\nopp = {Ah, 2c, 3s}",
+  "expect_fragment": {
+    "seed": 3,
+    "hidden_ranges": {
+      "0": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "4",
+                  "suit": "SPADES"
+                },
+                {
+                  "rank": "6",
+                  "suit": "HEARTS"
+                },
+                {
+                  "rank": "7",
+                  "suit": "CLUBS"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "A",
+                  "suit": "HEARTS"
+                },
+                {
+                  "rank": "2",
+                  "suit": "CLUBS"
+                },
+                {
+                  "rank": "3",
+                  "suit": "SPADES"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

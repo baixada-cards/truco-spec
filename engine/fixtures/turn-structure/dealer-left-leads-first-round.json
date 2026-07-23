@@ -1,0 +1,136 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "turn-structure/dealer-left-leads-first-round",
+  "ruleset": "truco-2p-v1",
+  "description": "The player to the dealer's left leads the first round, and the turn passes to the other player after the first play.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "A",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "3",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "5",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p1c2",
+          "rank": "4",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null
+  },
+  "steps": [
+    {
+      "op": "assert_legal_actions",
+      "player": 0,
+      "must_include": [
+        {
+          "type": "play_face_up",
+          "card_id": "p0c0"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c1"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c2"
+        },
+        {
+          "type": "raise",
+          "to": 3
+        }
+      ],
+      "must_exclude": [
+        {
+          "type": "play_face_down",
+          "card_id": "p0c0"
+        },
+        {
+          "type": "play_face_down",
+          "card_id": "p0c1"
+        },
+        {
+          "type": "play_face_down",
+          "card_id": "p0c2"
+        }
+      ]
+    },
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c0"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": 1,
+        "completed_rounds": [],
+        "current_round": {
+          "leader": 0,
+          "plays": [
+            {
+              "player": 0,
+              "visibility": "up",
+              "card": {
+                "rank": "7",
+                "suit": "DIAMONDS"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "assert_rejected_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c1"
+      },
+      "error_code": "ACT_OUT_OF_TURN"
+    }
+  ]
+}

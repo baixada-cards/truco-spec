@@ -1,0 +1,66 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "deal/predeal-both-players-workflow",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "seed=43\ndeal(turnup=As, hero={4s, 6h, 7c}, opp=[>=A, >=2, <=3])",
+  "expect_fragment": {
+    "seed": 43,
+    "pending_hand": {
+      "turnup": {
+        "rank": "A",
+        "suit": "SPADES"
+      }
+    },
+    "hidden_ranges": {
+      "0": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "4",
+                  "suit": "SPADES"
+                },
+                {
+                  "rank": "6",
+                  "suit": "HEARTS"
+                },
+                {
+                  "rank": "7",
+                  "suit": "CLUBS"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                {
+                  "strength_at_least": "A"
+                },
+                {
+                  "strength_at_least": "2"
+                },
+                {
+                  "strength_at_most": "3"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

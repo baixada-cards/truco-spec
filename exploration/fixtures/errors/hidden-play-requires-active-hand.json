@@ -1,0 +1,27 @@
+{
+  "fixture_version": "exploration-fixture/v1",
+  "id": "errors/hidden-play-requires-active-hand",
+  "ruleset": "truco-2p-v1",
+  "spec": {
+    "seed": 67,
+    "base_state": {
+      "next_dealer": 1,
+      "score": { "0": 0, "1": 0 },
+      "winner": null,
+      "current_hand": null
+    },
+    "hidden_plays": {
+      "0": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "exact": { "rank": "A", "suit": "HEARTS" }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "expect_error": "HIDDEN_PLAY_REQUIRES_ACTIVE_HAND"
+}

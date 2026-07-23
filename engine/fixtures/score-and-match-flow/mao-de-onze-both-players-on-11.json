@@ -1,0 +1,122 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "score-and-match-flow/mao-de-onze-both-players-on-11",
+  "ruleset": "truco-2p-v1",
+  "description": "When both players start on 11, the hand auto-starts at 3 with no pending decision and raises remain unavailable.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 11,
+      "1": 11
+    },
+    "hand_value": 3,
+    "turnup": {
+      "rank": "6",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "3",
+          "suit": "SPADES"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": null
+  },
+  "steps": [
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": 0,
+        "hand_value": 3,
+        "hand_winner": null,
+        "match_winner": null,
+        "score": {
+          "0": 11,
+          "1": 11
+        },
+        "completed_rounds": [],
+        "current_round": {
+          "leader": 0,
+          "plays": []
+        },
+        "pending_raise": null,
+        "pending_decision": null
+      }
+    },
+    {
+      "op": "assert_legal_actions",
+      "player": 0,
+      "must_include": [
+        {
+          "type": "play_face_up",
+          "card_id": "p0c0"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c1"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c2"
+        }
+      ],
+      "must_exclude": [
+        {
+          "type": "accept_eleven"
+        },
+        {
+          "type": "fold_eleven"
+        },
+        {
+          "type": "raise",
+          "to": 6
+        }
+      ]
+    },
+    {
+      "op": "assert_rejected_action",
+      "player": 0,
+      "action": {
+        "type": "accept_eleven"
+      },
+      "error_code": "NO_PENDING_ELEVEN_DECISION"
+    }
+  ]
+}

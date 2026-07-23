@@ -1,0 +1,126 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "raises/pending-raise-restricts-ordinary-play",
+  "ruleset": "truco-2p-v1",
+  "description": "While a raise is pending, ordinary card play is unavailable and only the legal response actions should remain.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "A",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "7",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "5",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p1c2",
+          "rank": "4",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "raise",
+        "to": 3
+      }
+    },
+    {
+      "op": "assert_legal_actions",
+      "player": 1,
+      "must_include": [
+        {
+          "type": "accept_raise"
+        },
+        {
+          "type": "fold"
+        },
+        {
+          "type": "raise",
+          "to": 6
+        }
+      ],
+      "must_exclude": [
+        {
+          "type": "play_face_up",
+          "card_id": "p1c0"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p1c1"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p1c2"
+        },
+        {
+          "type": "play_face_down",
+          "card_id": "p1c0"
+        },
+        {
+          "type": "play_face_down",
+          "card_id": "p1c1"
+        },
+        {
+          "type": "play_face_down",
+          "card_id": "p1c2"
+        },
+        {
+          "type": "raise",
+          "to": 9
+        }
+      ]
+    },
+    {
+      "op": "assert_rejected_action",
+      "player": 1,
+      "action": {
+        "type": "raise",
+        "to": 9
+      },
+      "error_code": "INVALID_RAISE_TARGET"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baixada.cards/spec/truco-2p-v1/engine/partial-public-state.schema.json",
+  "title": "PartialNormalizedPublicState",
+  "description": "A subset assertion over NormalizedPublicState. Omitted top-level fields are intentionally ignored; fields that are present retain their canonical public-state shape.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "next_player": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ]
+    },
+    "hand_value": {
+      "type": "integer",
+      "enum": [
+        1,
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    "hand_winner": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ]
+    },
+    "match_winner": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ]
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "0",
+        "1"
+      ],
+      "properties": {
+        "0": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "1": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        }
+      }
+    },
+    "completed_rounds": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "leader",
+          "winner"
+        ],
+        "properties": {
+          "leader": {
+            "type": "integer",
+            "enum": [
+              0,
+              1
+            ]
+          },
+          "winner": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "enum": [
+              0,
+              1,
+              null
+            ]
+          }
+        }
+      }
+    },
+    "current_round": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "leader",
+        "plays"
+      ],
+      "properties": {
+        "leader": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "plays": {
+          "type": "array",
+          "maxItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "player",
+              "visibility"
+            ],
+            "properties": {
+              "player": {
+                "type": "integer",
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              "visibility": {
+                "type": "string",
+                "enum": [
+                  "up",
+                  "down"
+                ]
+              },
+              "card": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "rank",
+                  "suit"
+                ],
+                "properties": {
+                  "rank": {
+                    "type": "string",
+                    "enum": [
+                      "4",
+                      "5",
+                      "6",
+                      "7",
+                      "Q",
+                      "J",
+                      "K",
+                      "A",
+                      "2",
+                      "3"
+                    ]
+                  },
+                  "suit": {
+                    "type": "string",
+                    "enum": [
+                      "DIAMONDS",
+                      "SPADES",
+                      "HEARTS",
+                      "CLUBS"
+                    ]
+                  }
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "visibility": {
+                      "const": "up"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "card"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "visibility": {
+                      "const": "down"
+                    }
+                  }
+                },
+                "then": {
+                  "not": {
+                    "required": [
+                      "card"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "pending_raise": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "raised_by": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "to": {
+          "type": "integer",
+          "enum": [
+            3,
+            6,
+            9,
+            12
+          ]
+        },
+        "previous_value": {
+          "type": "integer",
+          "enum": [
+            1,
+            3,
+            6,
+            9
+          ]
+        }
+      },
+      "required": [
+        "raised_by",
+        "to",
+        "previous_value"
+      ]
+    },
+    "pending_decision": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "mao_de_onze"
+        },
+        "player": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "player"
+      ]
+    }
+  }
+}

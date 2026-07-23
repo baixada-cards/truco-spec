@@ -1,0 +1,16 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "errors/duplicate-player-range-assignment",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "deal(turnup=As, opp=[>=A, <=3])\nopp = {As, 2c}",
+  "expect_error": {
+    "code": "NOTATION_PARSE_ERROR",
+    "message_contains": "Conflicting notation assignment for hidden_ranges.1",
+    "line": 2,
+    "column": 1
+  }
+}

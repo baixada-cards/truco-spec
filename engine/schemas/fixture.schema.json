@@ -1,0 +1,877 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baixada.cards/spec/truco-2p-v1/engine/fixture.schema.json",
+  "title": "EngineFixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fixture_version",
+    "id",
+    "ruleset",
+    "description",
+    "initial_state"
+  ],
+  "properties": {
+    "fixture_version": {
+      "type": "string",
+      "const": "engine-fixture/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(?:/[a-z0-9-]+)+$"
+    },
+    "ruleset": {
+      "type": "string",
+      "const": "truco-2p-v1"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "initial_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dealer",
+        "next_player",
+        "score",
+        "hand_value",
+        "turnup",
+        "hands",
+        "completed_rounds",
+        "current_round",
+        "pending_raise"
+      ],
+      "properties": {
+        "dealer": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "next_player": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "score": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "0",
+            "1"
+          ],
+          "properties": {
+            "0": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 12
+            },
+            "1": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 12
+            }
+          }
+        },
+        "hand_value": {
+          "type": "integer",
+          "enum": [
+            1,
+            3,
+            6,
+            9,
+            12
+          ]
+        },
+        "turnup": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rank",
+            "suit"
+          ],
+          "properties": {
+            "rank": {
+              "type": "string",
+              "enum": [
+                "4",
+                "5",
+                "6",
+                "7",
+                "Q",
+                "J",
+                "K",
+                "A",
+                "2",
+                "3"
+              ]
+            },
+            "suit": {
+              "type": "string",
+              "enum": [
+                "DIAMONDS",
+                "SPADES",
+                "HEARTS",
+                "CLUBS"
+              ]
+            }
+          }
+        },
+        "hands": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "0",
+            "1"
+          ],
+          "properties": {
+            "0": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "$ref": "#/$defs/privateCard"
+              }
+            },
+            "1": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "$ref": "#/$defs/privateCard"
+              }
+            }
+          }
+        },
+        "completed_rounds": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "$ref": "#/$defs/completedRound"
+          }
+        },
+        "current_round": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "leader",
+            "plays"
+          ],
+          "properties": {
+            "leader": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "plays": {
+              "type": "array",
+              "maxItems": 2,
+              "items": {
+                "$ref": "#/$defs/privatePlay"
+              }
+            }
+          }
+        },
+        "last_raised_by": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "pending_raise": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "raised_by": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "to": {
+              "type": "integer",
+              "enum": [
+                3,
+                6,
+                9,
+                12
+              ]
+            },
+            "previous_value": {
+              "type": "integer",
+              "enum": [
+                1,
+                3,
+                6,
+                9
+              ]
+            }
+          },
+          "required": [
+            "raised_by",
+            "to",
+            "previous_value"
+          ]
+        },
+        "pending_decision": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "mao_de_onze"
+            },
+            "player": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "player"
+          ]
+        }
+      }
+    },
+    "expect_initial_state_error": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_]+$"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/assertLegalActionsStep"
+          },
+          {
+            "$ref": "#/$defs/applyActionStep"
+          },
+          {
+            "$ref": "#/$defs/assertStateStep"
+          },
+          {
+            "$ref": "#/$defs/assertExportRoundTripStep"
+          },
+          {
+            "$ref": "#/$defs/assertRejectedActionStep"
+          }
+        ]
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "steps"
+      ],
+      "not": {
+        "required": [
+          "expect_initial_state_error"
+        ]
+      }
+    },
+    {
+      "required": [
+        "expect_initial_state_error"
+      ],
+      "not": {
+        "required": [
+          "steps"
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "privateCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "rank",
+        "suit"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^p[01]c[0-2]$"
+        },
+        "rank": {
+          "type": "string",
+          "enum": [
+            "4",
+            "5",
+            "6",
+            "7",
+            "Q",
+            "J",
+            "K",
+            "A",
+            "2",
+            "3"
+          ]
+        },
+        "suit": {
+          "type": "string",
+          "enum": [
+            "DIAMONDS",
+            "SPADES",
+            "HEARTS",
+            "CLUBS"
+          ]
+        }
+      }
+    },
+    "publicCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "suit"
+      ],
+      "properties": {
+        "rank": {
+          "type": "string",
+          "enum": [
+            "4",
+            "5",
+            "6",
+            "7",
+            "Q",
+            "J",
+            "K",
+            "A",
+            "2",
+            "3"
+          ]
+        },
+        "suit": {
+          "type": "string",
+          "enum": [
+            "DIAMONDS",
+            "SPADES",
+            "HEARTS",
+            "CLUBS"
+          ]
+        }
+      }
+    },
+    "privatePlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "player",
+        "visibility",
+        "card"
+      ],
+      "properties": {
+        "player": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "up",
+            "down"
+          ]
+        },
+        "card": {
+          "$ref": "#/$defs/privateCard"
+        }
+      }
+    },
+    "completedRound": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "leader",
+        "winner"
+      ],
+      "properties": {
+        "leader": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "winner": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        }
+      }
+    },
+    "action": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "card_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "play_face_up"
+            },
+            "card_id": {
+              "type": "string",
+              "pattern": "^p[01]c[0-2]$"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "card_id"
+          ],
+          "properties": {
+            "type": {
+              "const": "play_face_down"
+            },
+            "card_id": {
+              "type": "string",
+              "pattern": "^p[01]c[0-2]$"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "to"
+          ],
+          "properties": {
+            "type": {
+              "const": "raise"
+            },
+            "to": {
+              "type": "integer",
+              "enum": [
+                3,
+                6,
+                9,
+                12
+              ]
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "accept_raise"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "fold"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "accept_eleven"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "concede_hand"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "fold_eleven"
+            }
+          }
+        }
+      ]
+    },
+    "partialPublicState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "next_player": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "hand_value": {
+          "type": "integer",
+          "enum": [
+            1,
+            3,
+            6,
+            9,
+            12
+          ]
+        },
+        "hand_winner": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "match_winner": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "enum": [
+            0,
+            1,
+            null
+          ]
+        },
+        "score": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "0": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 12
+            },
+            "1": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 12
+            }
+          }
+        },
+        "completed_rounds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/completedRound"
+          }
+        },
+        "current_round": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "leader": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "plays": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "player",
+                  "visibility"
+                ],
+                "properties": {
+                  "player": {
+                    "type": "integer",
+                    "enum": [
+                      0,
+                      1
+                    ]
+                  },
+                  "visibility": {
+                    "type": "string",
+                    "enum": [
+                      "up",
+                      "down"
+                    ]
+                  },
+                  "card": {
+                    "$ref": "#/$defs/publicCard"
+                  }
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "visibility": {
+                          "const": "up"
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "card"
+                      ]
+                    }
+                  },
+                  {
+                    "if": {
+                      "properties": {
+                        "visibility": {
+                          "const": "down"
+                        }
+                      }
+                    },
+                    "then": {
+                      "not": {
+                        "required": [
+                          "card"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "pending_raise": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "raised_by": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            },
+            "to": {
+              "type": "integer",
+              "enum": [
+                3,
+                6,
+                9,
+                12
+              ]
+            },
+            "previous_value": {
+              "type": "integer",
+              "enum": [
+                1,
+                3,
+                6,
+                9
+              ]
+            }
+          }
+        },
+        "pending_decision": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "mao_de_onze"
+            },
+            "player": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          }
+        }
+      }
+    },
+    "assertLegalActionsStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "player"
+      ],
+      "properties": {
+        "op": {
+          "const": "assert_legal_actions"
+        },
+        "player": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "must_include": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/action"
+          }
+        },
+        "must_exclude": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/action"
+          }
+        }
+      }
+    },
+    "applyActionStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "player",
+        "action"
+      ],
+      "properties": {
+        "op": {
+          "const": "apply_action"
+        },
+        "player": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "action": {
+          "$ref": "#/$defs/action"
+        }
+      }
+    },
+    "assertStateStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "expect"
+      ],
+      "properties": {
+        "op": {
+          "const": "assert_state"
+        },
+        "expect": {
+          "$ref": "#/$defs/partialPublicState"
+        }
+      }
+    },
+    "assertExportRoundTripStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "expect"
+      ],
+      "properties": {
+        "op": {
+          "const": "assert_export_round_trip"
+        },
+        "expect": {
+          "$ref": "#/$defs/partialPublicState"
+        }
+      }
+    },
+    "assertRejectedActionStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "op",
+        "player",
+        "action",
+        "error_code"
+      ],
+      "properties": {
+        "op": {
+          "const": "assert_rejected_action"
+        },
+        "player": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "action": {
+          "$ref": "#/$defs/action"
+        },
+        "error_code": {
+          "type": "string",
+          "pattern": "^[A-Z0-9_]+$"
+        }
+      }
+    }
+  }
+}

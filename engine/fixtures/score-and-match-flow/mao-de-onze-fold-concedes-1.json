@@ -1,0 +1,112 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "score-and-match-flow/mao-de-onze-fold-concedes-1",
+  "ruleset": "truco-2p-v1",
+  "description": "Folding during a pending mão de onze decision concedes 1 point immediately.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 11,
+      "1": 8
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "6",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "3",
+          "suit": "SPADES"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": {
+      "type": "mao_de_onze",
+      "player": 0
+    }
+  },
+  "steps": [
+    {
+      "op": "assert_legal_actions",
+      "player": 0,
+      "must_include": [
+        {
+          "type": "accept_eleven"
+        },
+        {
+          "type": "fold_eleven"
+        }
+      ],
+      "must_exclude": [
+        {
+          "type": "raise",
+          "to": 3
+        }
+      ]
+    },
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "fold_eleven"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": null,
+        "hand_value": 1,
+        "hand_winner": 1,
+        "match_winner": null,
+        "score": {
+          "0": 11,
+          "1": 9
+        },
+        "completed_rounds": [],
+        "current_round": {
+          "leader": 0,
+          "plays": []
+        },
+        "pending_raise": null,
+        "pending_decision": null
+      }
+    }
+  ]
+}

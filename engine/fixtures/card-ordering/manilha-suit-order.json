@@ -1,0 +1,95 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "card-ordering/manilha-suit-order",
+  "ruleset": "truco-2p-v1",
+  "description": "Between two manilhas, suit order decides the round.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "A",
+      "suit": "HEARTS"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "2",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p0c1",
+          "rank": "7",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "2",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "6",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p1c2",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c0"
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p1c0"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": 1,
+        "completed_rounds": [
+          {
+            "leader": 0,
+            "winner": 1
+          }
+        ],
+        "current_round": {
+          "leader": 1,
+          "plays": []
+        }
+      }
+    }
+  ]
+}

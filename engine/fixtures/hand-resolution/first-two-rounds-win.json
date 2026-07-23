@@ -1,0 +1,118 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "hand-resolution/first-two-rounds-win",
+  "ruleset": "truco-2p-v1",
+  "description": "A player who wins the first two rounds wins the hand immediately.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "4",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "Q",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "6",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "J",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c0"
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p1c0"
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c1"
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p1c1"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": null,
+        "hand_value": 1,
+        "hand_winner": 0,
+        "match_winner": null,
+        "score": {
+          "0": 1,
+          "1": 0
+        },
+        "completed_rounds": [
+          {
+            "leader": 0,
+            "winner": 0
+          },
+          {
+            "leader": 0,
+            "winner": 0
+          }
+        ]
+      }
+    }
+  ]
+}

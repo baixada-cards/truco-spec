@@ -1,0 +1,16 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "errors/bad-weight-literal",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "opp = {As, 2c}@x",
+  "expect_error": {
+    "code": "NOTATION_PARSE_ERROR",
+    "message_contains": "Weight must be an integer",
+    "line": 1,
+    "column": 16
+  }
+}

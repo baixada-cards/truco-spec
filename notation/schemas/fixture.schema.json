@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baixada.cards/spec/truco-2p-v1/notation/fixture.schema.json",
+  "title": "NotationFixture",
+  "type": "object",
+  "required": ["fixture_version", "id", "ruleset", "context", "notation"],
+  "properties": {
+    "fixture_version": {
+      "const": "notation-fixture/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+/[a-z0-9-]+$"
+    },
+    "ruleset": {
+      "const": "truco-2p-v1"
+    },
+    "context": {
+      "type": "object",
+      "required": ["human_player", "bot_player"],
+      "properties": {
+        "human_player": {
+          "type": "integer",
+          "enum": [0, 1]
+        },
+        "bot_player": {
+          "type": "integer",
+          "enum": [0, 1]
+        }
+      },
+      "additionalProperties": false
+    },
+    "notation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expect_fragment": {
+      "type": "object"
+    },
+    "expect_error": {
+      "type": "object",
+      "required": ["code", "message_contains", "line", "column"],
+      "properties": {
+        "code": {
+          "const": "NOTATION_PARSE_ERROR"
+        },
+        "message_contains": {
+          "type": "string",
+          "minLength": 1
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "column": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        { "required": ["expect_fragment"] },
+        { "required": ["expect_error"] }
+      ]
+    }
+  ],
+  "additionalProperties": false
+}

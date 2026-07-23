@@ -1,0 +1,32 @@
+{
+  "fixture_version": "exploration-fixture/v1",
+  "id": "errors/ranges-require-pending-hand-spec",
+  "ruleset": "truco-2p-v1",
+  "spec": {
+    "seed": 13,
+    "base_state": {
+      "next_dealer": 1,
+      "score": { "0": 0, "1": 0 },
+      "winner": null,
+      "current_hand": null
+    },
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                { "rank": "A", "suit": "HEARTS" },
+                { "rank": "2", "suit": "CLUBS" },
+                { "rank": "3", "suit": "SPADES" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "expect_error": "MISSING_PENDING_HAND_SPEC"
+}

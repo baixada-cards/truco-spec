@@ -1,0 +1,99 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "score-and-match-flow/concede-during-pending-re-raise-awards-implicit-value",
+  "ruleset": "truco-2p-v1",
+  "description": "Conceding while a re-raise is pending awards the implicitly accepted value (the pending raise's previous_value), matching what a fold would award.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "A",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "4",
+          "suit": "HEARTS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "5",
+          "suit": "HEARTS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "6",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "5",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "6",
+          "suit": "CLUBS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "raise",
+        "to": 3
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "raise",
+        "to": 6
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "concede_hand"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "hand_winner": 1,
+        "match_winner": null,
+        "score": {
+          "0": 0,
+          "1": 3
+        },
+        "next_player": null
+      }
+    }
+  ]
+}

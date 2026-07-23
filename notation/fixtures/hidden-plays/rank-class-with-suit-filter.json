@@ -1,0 +1,25 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "hidden-plays/rank-class-with-suit-filter",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "hidden(opp) = A* & suit in {SPADES, CLUBS}",
+  "expect_fragment": {
+    "hidden_plays": {
+      "1": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "allowed_ranks": ["A"],
+              "allowed_suits": ["SPADES", "CLUBS"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

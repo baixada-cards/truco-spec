@@ -1,0 +1,24 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "hidden-plays/current-hidden-play",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "hidden(opp) = manilha",
+  "expect_fragment": {
+    "hidden_plays": {
+      "1": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "is_manilha": true
+            }
+          }
+        ]
+      }
+    }
+  }
+}

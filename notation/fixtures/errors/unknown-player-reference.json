@@ -1,0 +1,16 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "errors/unknown-player-reference",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "villan = [>=A, <=3]",
+  "expect_error": {
+    "code": "NOTATION_PARSE_ERROR",
+    "message_contains": "Unknown player reference",
+    "line": 1,
+    "column": 1
+  }
+}

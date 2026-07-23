@@ -1,0 +1,15 @@
+{
+  "fixture_version": "exploration-fixture/v1",
+  "id": "errors/invalid-base-state",
+  "ruleset": "truco-2p-v1",
+  "spec": {
+    "seed": 19,
+    "base_state": {
+      "next_dealer": 1,
+      "score": { "0": 0, "1": 0 },
+      "winner": 1,
+      "current_hand": null
+    }
+  },
+  "expect_error": "INVALID_INITIAL_STATE"
+}

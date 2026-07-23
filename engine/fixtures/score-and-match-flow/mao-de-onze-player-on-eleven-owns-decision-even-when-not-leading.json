@@ -1,0 +1,137 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "score-and-match-flow/mao-de-onze-player-on-eleven-owns-decision-even-when-not-leading",
+  "ruleset": "truco-2p-v1",
+  "description": "The player on 11 keeps the mao de onze decision even when the opening lead belongs to the other seat.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 1,
+    "score": {
+      "0": 4,
+      "1": 11
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "6",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "3",
+          "suit": "SPADES"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": {
+      "type": "mao_de_onze",
+      "player": 1
+    }
+  },
+  "steps": [
+    {
+      "op": "assert_legal_actions",
+      "player": 1,
+      "must_include": [
+        {
+          "type": "accept_eleven"
+        },
+        {
+          "type": "fold_eleven"
+        }
+      ],
+      "must_exclude": [
+        {
+          "type": "raise",
+          "to": 3
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p1c0"
+        }
+      ]
+    },
+    {
+      "op": "assert_rejected_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c0"
+      },
+      "error_code": "ACT_OUT_OF_TURN"
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "accept_eleven"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": 0,
+        "hand_value": 3,
+        "pending_decision": null
+      }
+    },
+    {
+      "op": "assert_legal_actions",
+      "player": 0,
+      "must_include": [
+        {
+          "type": "play_face_up",
+          "card_id": "p0c0"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c1"
+        },
+        {
+          "type": "play_face_up",
+          "card_id": "p0c2"
+        }
+      ],
+      "must_exclude": [
+        {
+          "type": "raise",
+          "to": 3
+        }
+      ]
+    }
+  ]
+}

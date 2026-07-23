@@ -1,0 +1,81 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "errors-and-invalid-actions/re-raise-at-12-is-illegal",
+  "ruleset": "truco-2p-v1",
+  "description": "A player cannot raise once the hand is already at 12.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 1,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 9,
+    "turnup": {
+      "rank": "A",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "3",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "5",
+          "suit": "SPADES"
+        },
+        {
+          "id": "p1c2",
+          "rank": "4",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": [
+        {
+          "player": 0,
+          "visibility": "up",
+          "card": {
+            "id": "p0c0",
+            "rank": "7",
+            "suit": "DIAMONDS"
+          }
+        }
+      ]
+    },
+    "pending_raise": {
+      "raised_by": 0,
+      "to": 12,
+      "previous_value": 9
+    }
+  },
+  "steps": [
+    {
+      "op": "assert_rejected_action",
+      "player": 1,
+      "action": {
+        "type": "raise",
+        "to": 12
+      },
+      "error_code": "RAISE_NOT_ALLOWED"
+    }
+  ]
+}

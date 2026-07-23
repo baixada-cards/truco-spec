@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baixada.cards/spec/truco-2p-v1/engine/public-state.schema.json",
+  "title": "NormalizedPublicState",
+  "description": "The complete normalized public state returned by a conforming two-player Truco engine.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "next_player",
+    "hand_value",
+    "hand_winner",
+    "match_winner",
+    "score",
+    "completed_rounds",
+    "current_round",
+    "pending_raise",
+    "pending_decision"
+  ],
+  "properties": {
+    "next_player": {
+      "$ref": "#/$defs/nullablePlayer"
+    },
+    "hand_value": {
+      "type": "integer",
+      "enum": [
+        1,
+        3,
+        6,
+        9,
+        12
+      ]
+    },
+    "hand_winner": {
+      "$ref": "#/$defs/nullablePlayer"
+    },
+    "match_winner": {
+      "$ref": "#/$defs/nullablePlayer"
+    },
+    "score": {
+      "$ref": "#/$defs/score"
+    },
+    "completed_rounds": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "$ref": "#/$defs/completedRound"
+      }
+    },
+    "current_round": {
+      "$ref": "#/$defs/currentRound"
+    },
+    "pending_raise": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/pendingRaise"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "pending_decision": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/pendingDecision"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "player": {
+      "type": "integer",
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "nullablePlayer": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "enum": [
+        0,
+        1,
+        null
+      ]
+    },
+    "score": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "0",
+        "1"
+      ],
+      "properties": {
+        "0": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        },
+        "1": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12
+        }
+      }
+    },
+    "rank": {
+      "type": "string",
+      "enum": [
+        "4",
+        "5",
+        "6",
+        "7",
+        "Q",
+        "J",
+        "K",
+        "A",
+        "2",
+        "3"
+      ]
+    },
+    "suit": {
+      "type": "string",
+      "enum": [
+        "DIAMONDS",
+        "SPADES",
+        "HEARTS",
+        "CLUBS"
+      ]
+    },
+    "publicCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "suit"
+      ],
+      "properties": {
+        "rank": {
+          "$ref": "#/$defs/rank"
+        },
+        "suit": {
+          "$ref": "#/$defs/suit"
+        }
+      }
+    },
+    "completedRound": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "leader",
+        "winner"
+      ],
+      "properties": {
+        "leader": {
+          "$ref": "#/$defs/player"
+        },
+        "winner": {
+          "$ref": "#/$defs/nullablePlayer"
+        }
+      }
+    },
+    "publicPlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "player",
+        "visibility"
+      ],
+      "properties": {
+        "player": {
+          "$ref": "#/$defs/player"
+        },
+        "visibility": {
+          "type": "string",
+          "enum": [
+            "up",
+            "down"
+          ]
+        },
+        "card": {
+          "$ref": "#/$defs/publicCard"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "visibility"
+            ],
+            "properties": {
+              "visibility": {
+                "const": "up"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "card"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "visibility"
+            ],
+            "properties": {
+              "visibility": {
+                "const": "down"
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "required": [
+                "card"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "currentRound": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "leader",
+        "plays"
+      ],
+      "properties": {
+        "leader": {
+          "$ref": "#/$defs/player"
+        },
+        "plays": {
+          "type": "array",
+          "maxItems": 1,
+          "items": {
+            "$ref": "#/$defs/publicPlay"
+          }
+        }
+      }
+    },
+    "pendingRaise": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raised_by",
+        "to",
+        "previous_value"
+      ],
+      "properties": {
+        "raised_by": {
+          "$ref": "#/$defs/player"
+        },
+        "to": {
+          "type": "integer",
+          "enum": [
+            3,
+            6,
+            9,
+            12
+          ]
+        },
+        "previous_value": {
+          "type": "integer",
+          "enum": [
+            1,
+            3,
+            6,
+            9
+          ]
+        }
+      }
+    },
+    "pendingDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "player"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "mao_de_onze"
+        },
+        "player": {
+          "$ref": "#/$defs/player"
+        }
+      }
+    }
+  }
+}

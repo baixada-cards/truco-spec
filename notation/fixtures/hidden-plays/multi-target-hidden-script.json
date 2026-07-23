@@ -1,0 +1,51 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "hidden-plays/multi-target-hidden-script",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "seed=23\nhidden(opp) = manilha@2 | As@1\nhidden(round=0, player=hero) = 2c",
+  "expect_fragment": {
+    "seed": 23,
+    "hidden_plays": {
+      "1": {
+        "weighted_cards": [
+          {
+            "weight": 2,
+            "card": {
+              "is_manilha": true
+            }
+          },
+          {
+            "weight": 1,
+            "card": {
+              "exact": {
+                "rank": "A",
+                "suit": "SPADES"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "completed_hidden_plays": [
+      {
+        "round_index": 0,
+        "player": 0,
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "exact": {
+                "rank": "2",
+                "suit": "CLUBS"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

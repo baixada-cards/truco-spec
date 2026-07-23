@@ -1,0 +1,42 @@
+[project]
+name = "truco-spec-validation"
+version = "0.0.0"
+description = "Validation tooling for Baixada's implementation-neutral Truco contracts"
+requires-python = ">=3.12,<3.14"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "jsonschema==4.26.0",
+    "pytest==9.0.2",
+    "ruff==0.14.10",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "B",
+    "E",
+    "F",
+    "I",
+]
+
+[tool.ruff.format]
+indent-style = "space"
+line-ending = "auto"
+quote-style = "double"
+skip-magic-trailing-comma = false
+
+[tool.uv]
+exclude-newer = "7 days"
+package = false
+
+[tool.uv.pip]
+exclude-newer = "7 days"

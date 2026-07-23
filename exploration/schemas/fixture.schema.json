@@ -1,0 +1,323 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://baixada.cards/spec/truco-2p-v1/exploration/fixture.schema.json",
+  "title": "ExplorationFixture",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "fixture_version",
+    "id",
+    "ruleset",
+    "spec"
+  ],
+  "properties": {
+    "fixture_version": {
+      "type": "string",
+      "const": "exploration-fixture/v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+(?:/[a-z0-9-]+)+$"
+    },
+    "ruleset": {
+      "type": "string",
+      "const": "truco-2p-v1"
+    },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base_state"
+      ],
+      "properties": {
+        "base_state": {
+          "$ref": "https://baixada.cards/spec/truco-2p-v1/engine/match-state.schema.json"
+        },
+        "pending_hand": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "turnup"
+          ],
+          "properties": {
+            "turnup": {
+              "$ref": "#/$defs/cardFace"
+            }
+          }
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18446744073709551615
+        },
+        "hidden_ranges": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "0": {
+              "$ref": "#/$defs/playerRange"
+            },
+            "1": {
+              "$ref": "#/$defs/playerRange"
+            }
+          }
+        },
+        "hidden_plays": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "0": {
+              "$ref": "#/$defs/hiddenPlayRange"
+            },
+            "1": {
+              "$ref": "#/$defs/hiddenPlayRange"
+            }
+          }
+        },
+        "completed_hidden_plays": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/completedHiddenPlayOverride"
+          }
+        }
+      }
+    },
+    "expect_resolved_state": {
+      "description": "A recursive subset assertion against the resolved MatchState, not a complete MatchState.",
+      "type": "object"
+    },
+    "expect_error": {
+      "type": "string",
+      "pattern": "^[A-Z0-9_]+$"
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "expect_resolved_state"
+      ]
+    },
+    {
+      "required": [
+        "expect_error"
+      ]
+    }
+  ],
+  "$defs": {
+    "rank": {
+      "type": "string",
+      "enum": [
+        "4",
+        "5",
+        "6",
+        "7",
+        "Q",
+        "J",
+        "K",
+        "A",
+        "2",
+        "3"
+      ]
+    },
+    "suit": {
+      "type": "string",
+      "enum": [
+        "DIAMONDS",
+        "SPADES",
+        "HEARTS",
+        "CLUBS"
+      ]
+    },
+    "cardFace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "suit"
+      ],
+      "properties": {
+        "rank": {
+          "$ref": "#/$defs/rank"
+        },
+        "suit": {
+          "$ref": "#/$defs/suit"
+        }
+      }
+    },
+    "cardConstraint": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exact": {
+          "$ref": "#/$defs/cardFace"
+        },
+        "allowed_ranks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rank"
+          }
+        },
+        "allowed_suits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/suit"
+          }
+        },
+        "is_manilha": {
+          "type": "boolean"
+        },
+        "strength_at_least": {
+          "$ref": "#/$defs/rank"
+        },
+        "strength_at_most": {
+          "$ref": "#/$defs/rank"
+        }
+      }
+    },
+    "handPattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "cards"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "exact"
+            },
+            "cards": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "$ref": "#/$defs/cardFace"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "slots"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "ordered"
+            },
+            "slots": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "$ref": "#/$defs/cardConstraint"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "weight": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4294967295
+    },
+    "weightedHand": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weight",
+        "hand"
+      ],
+      "properties": {
+        "weight": {
+          "$ref": "#/$defs/weight"
+        },
+        "hand": {
+          "$ref": "#/$defs/handPattern"
+        }
+      }
+    },
+    "weightedCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weight",
+        "card"
+      ],
+      "properties": {
+        "weight": {
+          "$ref": "#/$defs/weight"
+        },
+        "card": {
+          "$ref": "#/$defs/cardConstraint"
+        }
+      }
+    },
+    "playerRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weighted_hands"
+      ],
+      "properties": {
+        "weighted_hands": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/weightedHand"
+          }
+        }
+      }
+    },
+    "hiddenPlayRange": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "weighted_cards"
+      ],
+      "properties": {
+        "weighted_cards": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/weightedCard"
+          }
+        }
+      }
+    },
+    "completedHiddenPlayOverride": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "round_index",
+        "player",
+        "weighted_cards"
+      ],
+      "properties": {
+        "round_index": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "player": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "weighted_cards": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/weightedCard"
+          }
+        }
+      }
+    }
+  }
+}

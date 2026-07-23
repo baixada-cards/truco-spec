@@ -1,0 +1,50 @@
+{
+  "fixture_version": "exploration-fixture/v1",
+  "id": "nature-nodes/specify-player-zero-full-hand-before-deal",
+  "ruleset": "truco-2p-v1",
+  "spec": {
+    "seed": 43,
+    "base_state": {
+      "next_dealer": 1,
+      "score": { "0": 0, "1": 0 },
+      "winner": null,
+      "current_hand": null
+    },
+    "pending_hand": {
+      "turnup": { "rank": "A", "suit": "SPADES" }
+    },
+    "hidden_ranges": {
+      "0": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                { "rank": "4", "suit": "SPADES" },
+                { "rank": "6", "suit": "HEARTS" },
+                { "rank": "7", "suit": "CLUBS" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "expect_resolved_state": {
+    "current_hand": {
+      "state": {
+        "dealer": 1,
+        "next_player": 0,
+        "turnup": { "rank": "A", "suit": "SPADES" },
+        "hands": {
+          "0": [
+            { "id": "p0c0", "rank": "4", "suit": "SPADES" },
+            { "id": "p0c1", "rank": "6", "suit": "HEARTS" },
+            { "id": "p0c2", "rank": "7", "suit": "CLUBS" }
+          ]
+        }
+      }
+    }
+  }
+}

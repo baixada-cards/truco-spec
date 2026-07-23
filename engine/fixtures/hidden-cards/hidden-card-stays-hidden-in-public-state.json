@@ -1,0 +1,95 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "hidden-cards/hidden-card-stays-hidden-in-public-state",
+  "ruleset": "truco-2p-v1",
+  "description": "A hidden card remains hidden in the public state after it is played.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "7",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "K",
+          "suit": "HEARTS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "Q",
+          "suit": "DIAMONDS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "4",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "J",
+          "suit": "CLUBS"
+        }
+      ]
+    },
+    "completed_rounds": [
+      {
+        "leader": 0,
+        "winner": 0
+      }
+    ],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_down",
+        "card_id": "p0c0"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": 1,
+        "hand_value": 1,
+        "hand_winner": null,
+        "match_winner": null,
+        "score": {
+          "0": 0,
+          "1": 0
+        },
+        "completed_rounds": [
+          {
+            "leader": 0,
+            "winner": 0
+          }
+        ],
+        "current_round": {
+          "leader": 0,
+          "plays": [
+            {
+              "player": 0,
+              "visibility": "down"
+            }
+          ]
+        },
+        "pending_raise": null
+      }
+    }
+  ]
+}

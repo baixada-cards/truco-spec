@@ -1,0 +1,93 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "round-resolution/fold-ends-round-immediately",
+  "ruleset": "truco-2p-v1",
+  "description": "A fold ends the round immediately.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "6",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "3",
+          "suit": "SPADES"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "raise",
+        "to": 3
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "fold"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": null,
+        "hand_winner": 0,
+        "completed_rounds": [],
+        "current_round": {
+          "leader": 0,
+          "plays": []
+        },
+        "pending_raise": null,
+        "pending_decision": null
+      }
+    }
+  ]
+}

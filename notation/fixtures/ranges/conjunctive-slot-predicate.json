@@ -1,0 +1,33 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/conjunctive-slot-predicate",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "opp = [rank in {A,2,3} & suit in {SPADES, CLUBS}, <=3]",
+  "expect_fragment": {
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                {
+                  "allowed_ranks": ["A", "2", "3"],
+                  "allowed_suits": ["SPADES", "CLUBS"]
+                },
+                {
+                  "strength_at_most": "3"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

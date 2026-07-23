@@ -1,0 +1,35 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "deal/predeal-turnup-and-range",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "deal(turnup=As, opp=[>=A, >=2, <=3])",
+  "expect_fragment": {
+    "pending_hand": {
+      "turnup": {
+        "rank": "A",
+        "suit": "SPADES"
+      }
+    },
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                { "strength_at_least": "A" },
+                { "strength_at_least": "2" },
+                { "strength_at_most": "3" }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

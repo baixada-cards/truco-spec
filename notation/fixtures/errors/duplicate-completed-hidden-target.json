@@ -1,0 +1,16 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "errors/duplicate-completed-hidden-target",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "hidden(round=0, player=hero) = As\nhidden(round=0, player=hero) = 2c",
+  "expect_error": {
+    "code": "NOTATION_PARSE_ERROR",
+    "message_contains": "Conflicting notation assignment for completed_hidden_plays[round=0,player=0]",
+    "line": 2,
+    "column": 1
+  }
+}

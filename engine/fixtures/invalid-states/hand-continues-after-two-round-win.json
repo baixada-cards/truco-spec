@@ -1,0 +1,51 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "invalid-states/hand-continues-after-two-round-win",
+  "ruleset": "truco-2p-v1",
+  "description": "A hand cannot continue after the same player has already won the first two rounds.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 0,
+      "1": 0
+    },
+    "hand_value": 1,
+    "turnup": {
+      "rank": "A",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c2",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        }
+      ]
+    },
+    "completed_rounds": [
+      {
+        "leader": 0,
+        "winner": 0
+      },
+      {
+        "leader": 0,
+        "winner": 0
+      }
+    ],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null
+  },
+  "expect_initial_state_error": "HAND_ALREADY_DECIDED"
+}

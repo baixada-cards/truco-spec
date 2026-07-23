@@ -1,0 +1,119 @@
+{
+  "fixture_version": "exploration-fixture/v1",
+  "id": "hidden-plays/exact-current-round-face-down-play",
+  "ruleset": "truco-2p-v1",
+  "spec": {
+    "seed": 59,
+    "base_state": {
+      "next_dealer": 1,
+      "score": {
+        "0": 0,
+        "1": 0
+      },
+      "winner": null,
+      "current_hand": {
+        "state": {
+          "dealer": 1,
+          "next_player": 1,
+          "score": {
+            "0": 0,
+            "1": 0
+          },
+          "hand_value": 1,
+          "turnup": {
+            "rank": "A",
+            "suit": "SPADES"
+          },
+          "hands": {
+            "0": [
+              {
+                "id": "p0c1",
+                "rank": "6",
+                "suit": "CLUBS"
+              }
+            ],
+            "1": [
+              {
+                "id": "p1c0",
+                "rank": "3",
+                "suit": "CLUBS"
+              },
+              {
+                "id": "p1c1",
+                "rank": "5",
+                "suit": "SPADES"
+              }
+            ]
+          },
+          "completed_rounds": [
+            {
+              "leader": 0,
+              "winner": 0
+            }
+          ],
+          "current_round": {
+            "leader": 0,
+            "plays": [
+              {
+                "player": 0,
+                "visibility": "down",
+                "card": {
+                  "id": "p0c0",
+                  "rank": "7",
+                  "suit": "DIAMONDS"
+                }
+              }
+            ]
+          },
+          "pending_raise": null,
+          "pending_decision": null
+        },
+        "hand_winner": null,
+        "match_winner": null
+      }
+    },
+    "hidden_plays": {
+      "0": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "exact": {
+                "rank": "A",
+                "suit": "HEARTS"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "expect_resolved_state": {
+    "current_hand": {
+      "state": {
+        "current_round": {
+          "plays": [
+            {
+              "player": 0,
+              "visibility": "down",
+              "card": {
+                "id": "p0c0",
+                "rank": "A",
+                "suit": "HEARTS"
+              }
+            }
+          ]
+        },
+        "hands": {
+          "0": [
+            {
+              "id": "p0c1",
+              "rank": "6",
+              "suit": "CLUBS"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

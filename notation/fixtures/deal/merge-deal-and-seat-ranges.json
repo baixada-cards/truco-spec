@@ -1,0 +1,59 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "deal/merge-deal-and-seat-ranges",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "seed=11\ndeal(turnup=As, opp=[>=A, <=3])\nhero = {2c, 3d}",
+  "expect_fragment": {
+    "seed": 11,
+    "pending_hand": {
+      "turnup": {
+        "rank": "A",
+        "suit": "SPADES"
+      }
+    },
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                {
+                  "strength_at_least": "A"
+                },
+                {
+                  "strength_at_most": "3"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "0": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "exact",
+              "cards": [
+                {
+                  "rank": "2",
+                  "suit": "CLUBS"
+                },
+                {
+                  "rank": "3",
+                  "suit": "DIAMONDS"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

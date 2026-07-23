@@ -1,0 +1,150 @@
+{
+  "fixture_version": "engine-fixture/v1",
+  "id": "score-and-match-flow/mao-de-onze-both-players-on-11-win-awards-3",
+  "ruleset": "truco-2p-v1",
+  "description": "When both players start on 11, winning the hand awards 3 immediately and can end the match without any eleven decision.",
+  "initial_state": {
+    "dealer": 1,
+    "next_player": 0,
+    "score": {
+      "0": 11,
+      "1": 11
+    },
+    "hand_value": 3,
+    "turnup": {
+      "rank": "6",
+      "suit": "SPADES"
+    },
+    "hands": {
+      "0": [
+        {
+          "id": "p0c0",
+          "rank": "7",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p0c1",
+          "rank": "6",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p0c2",
+          "rank": "4",
+          "suit": "HEARTS"
+        }
+      ],
+      "1": [
+        {
+          "id": "p1c0",
+          "rank": "5",
+          "suit": "DIAMONDS"
+        },
+        {
+          "id": "p1c1",
+          "rank": "4",
+          "suit": "CLUBS"
+        },
+        {
+          "id": "p1c2",
+          "rank": "3",
+          "suit": "SPADES"
+        }
+      ]
+    },
+    "completed_rounds": [],
+    "current_round": {
+      "leader": 0,
+      "plays": []
+    },
+    "pending_raise": null,
+    "pending_decision": null
+  },
+  "steps": [
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c0"
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p1c0"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": 0,
+        "hand_value": 3,
+        "hand_winner": null,
+        "match_winner": null,
+        "score": {
+          "0": 11,
+          "1": 11
+        },
+        "completed_rounds": [
+          {
+            "leader": 0,
+            "winner": 0
+          }
+        ],
+        "current_round": {
+          "leader": 0,
+          "plays": []
+        },
+        "pending_raise": null,
+        "pending_decision": null
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 0,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p0c1"
+      }
+    },
+    {
+      "op": "apply_action",
+      "player": 1,
+      "action": {
+        "type": "play_face_up",
+        "card_id": "p1c1"
+      }
+    },
+    {
+      "op": "assert_state",
+      "expect": {
+        "next_player": null,
+        "hand_value": 3,
+        "hand_winner": 0,
+        "match_winner": 0,
+        "score": {
+          "0": 12,
+          "1": 11
+        },
+        "completed_rounds": [
+          {
+            "leader": 0,
+            "winner": 0
+          },
+          {
+            "leader": 0,
+            "winner": 0
+          }
+        ],
+        "current_round": {
+          "leader": 0,
+          "plays": []
+        },
+        "pending_raise": null,
+        "pending_decision": null
+      }
+    }
+  ]
+}

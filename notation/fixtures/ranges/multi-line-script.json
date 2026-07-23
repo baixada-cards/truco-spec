@@ -1,0 +1,41 @@
+{
+  "fixture_version": "notation-fixture/v1",
+  "id": "ranges/multi-line-script",
+  "ruleset": "truco-2p-v1",
+  "context": {
+    "human_player": 0,
+    "bot_player": 1
+  },
+  "notation": "seed=13\nopp = [>=A, <=3]\nhidden(opp) = manilha",
+  "expect_fragment": {
+    "seed": 13,
+    "hidden_ranges": {
+      "1": {
+        "weighted_hands": [
+          {
+            "weight": 1,
+            "hand": {
+              "type": "ordered",
+              "slots": [
+                { "strength_at_least": "A" },
+                { "strength_at_most": "3" }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "hidden_plays": {
+      "1": {
+        "weighted_cards": [
+          {
+            "weight": 1,
+            "card": {
+              "is_manilha": true
+            }
+          }
+        ]
+      }
+    }
+  }
+}
