@@ -184,6 +184,38 @@ and all of them must hold for the card to match.
 
 `completed_hidden_plays[*].weighted_cards[*].card` uses the same single-card constraint language.
 
+## Sampling Determinism
+
+A `seed` makes sampling reproducible: the same seed and the same request must
+select the same branch. The seeded fixtures under
+`exploration/fixtures/weighted-branches/` encode specific selections, so the
+corpus pins not just *that* sampling is reproducible but *which* branch each
+seed picks.
+
+Those recorded selections depend on the reference implementation's
+random-number generator. The engine samples a weighted branch by drawing
+`gen_range(0..total_weight)` from a `rand` `StdRng`, and `rand` changed its
+small-range integer sampling algorithm in 0.9: the same seed and the same
+weights yield a different draw under 0.8 and 0.9, verified directly across
+several seeds. Fixture weights are small (often 0 and 1), so they sit squarely
+in the range where the algorithms diverge.
+
+Consequences for implementers:
+
+- The reference engine pins `rand` 0.8 deliberately. Upgrading it changes every
+  recorded seeded selection.
+- A non-Rust implementation cannot reproduce these fixtures by using its own
+  language's uniform-range primitive. Match the recorded outputs, or treat the
+  seeded fixtures as reproducibility checks against your own implementation
+  rather than as cross-implementation golden values.
+- Changing the sampling algorithm is a breaking fixture change and requires a
+  major release under "Contract discipline", not a fixture refresh.
+
+If `rand` must move, the durable fix is to define the seed-to-selection mapping
+here in terms of a primitive that does not drift (for example, an explicit
+rejection-sampling procedure over `next_u64`) and implement that in the engine,
+rather than inheriting whatever the dependency does this release.
+
 ## Current Scope
 
 Implemented now:

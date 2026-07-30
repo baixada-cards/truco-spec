@@ -462,9 +462,9 @@
       "sha256": "d5e77a155137c2e41b184de6a0f4f967c2289ac0620f8ed57d2f9f201ec22659"
     },
     {
-      "bytes": 7368,
+      "bytes": 9051,
       "path": "exploration/CONTRACT.md",
-      "sha256": "4425dc7bf6b40075b1fd457d00d2c7cf92ce38ea9a8bc8a6eb1aa3c9b316405d"
+      "sha256": "94e79aafa96205b9e73a417f2edb1d786e749283a68ba4028d5e2d52805efd3d"
     },
     {
       "bytes": 1823,
@@ -507,9 +507,9 @@
       "sha256": "7c94a295b6ed0d616a4eec6e0080cd0d56cd4d6a1e1fd0adb4e47c2d899124a8"
     },
     {
-      "bytes": 292,
+      "bytes": 564,
       "path": "exploration/aspects/weighted-branches.md",
-      "sha256": "91085105c99548c9171e7c46134a4d0fcf462e8bcaef31bde474c4430ebfc606"
+      "sha256": "f04bff63cd412841a00f3f19147a13683bb8553dc1ceb17ac7a1276f17592a49"
     },
     {
       "bytes": 1939,
